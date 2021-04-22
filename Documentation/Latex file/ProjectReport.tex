@@ -33,19 +33,79 @@
 
 
 \chapter{Model explanation \& design}
-The aim of this project is to design an adaptive cruise control, to design it following the MBD we of course needed a plant that models the vehicle longitudinal dynamics.
-In \textbf{\textit{FIGURE}} you can see the whole plant model.
-To model the longitudinal dynamics of the vehicle we picked from the simscape driveline library the “vehicle longitudinal dynamics” block.
+As anticipated before, the aim of this project is to design an Adaptive Cruise Control: to design it following the MBD, we of course need a plant that models the vehicle longitudinal dynamics.
+In Fig \ref{Plant} it is possible to see the whole plant model.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.5]{Plant.jpg}
+	\caption{Plant}
+	\label{Plant}
+\end{figure}
+
+
+Going deeper, to model the longitudinal dynamics of the vehicle we picked from the Simscape Driveline library the “vehicle longitudinal dynamics” block.
+
+
 We wanted to make some more detailed simulation so we decided to model the driveline system.
+
 The vehicle dynamics block accepts as input the long speed of the vehicle, we associated it to the long speed of the CoG of the wheels.
+
 The simscape wheels block model the behaviour of a the wheel in terms of inertia, rolling resistance and slip. The angular speed of the wheel is proportional to the torque given as input.
-The torque is the output of a mapped motor block, of course modifyed by a gear ratio block that models the one-speed transmission of the electric vehicle.
+
+The torque is the output of a mapped motor block, of course modified by a gear ratio block that models the one-speed transmission of the electric vehicle.
+
 When a negative torque is asked, the brake block provides a negative torque at the wheel input.
+
 With this plant model we wanted to model the entire driveline from the ECU torque request to the wheels motion.
 
 \chapter{Project development}
 
 \section{Requirements}
+\subsection{Software requirements}
+
+In order to be able to interact with the developed model, some software tools are needed:
+
+\begin{itemize}
+	
+	\item Matlab R2019b;
+	
+	\item Simulink;
+	
+	\item Simscape;
+	
+	\item Simscape Driveline.
+	
+\end{itemize}
+
+\subsection{High level requirements}
+
+The goal of the overall control system is to extend the mission of the simpler Cruise Control: regulate the speed to the desired one and keep it. In addition respect this goal, the Adaptive Cruise Control adapts the speed of the vehicle respect the velocity of the following one, being able to correctly mantain the safety distance dictated by the Highway Code when it needed (that is to say, when the current distance between the vehicles is lower than the required safety distance):
+
+\begin{equation*}
+	d_s=d_{min}+\dfrac{1}{k}v^2
+\end{equation*}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics{ACC.jpg}
+	\caption{ACC}
+\end{figure}
+
+\subsection{Low level requirements}
+The designed system is intended to work on an electric vehicle, considering also the state of charge of the battery: particularly, the overall behaviour of the control action will be more or less aggressive depending on the state of charge level.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics{RadarACC.jpg}
+	\caption{Front radar}
+\end{figure}
+
+Thanks to the presence of a sensor (typically a radar installed in the front of the car), the distance respect the following vehicle is continuosly monitored: when this distance falls below the threshold dictated by the Highway Code minus a safety margin quantity (one meter as dictated by requirement, to be sure to be able to brake in the correct timings), the control must act on the brakes. Then, during the acceleration phase, the system needs to be designed as following: when the first vehicle accelerates, the control must operate so that the vehicle speed becomes the one desired if it is possible,  that is to say if the two vehicles are far enough. Otherwise, the system must adequate the vehicle speed to the one needed to keep the safety distance.
+
+
+
+
 \section{Unity \& Integration testing}
 \begin{figure}[!h]
 	\centering
