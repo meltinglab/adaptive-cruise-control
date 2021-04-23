@@ -44,7 +44,40 @@ In Fig \ref{Plant} it is possible to see the whole plant model.
 \end{figure}
 
 
-Going deeper, to model the longitudinal dynamics of the vehicle we picked from the Simscape Driveline library the “vehicle longitudinal dynamics” block.
+Going deeper, it is possible to see that it consists of three main blocks:
+
+\begin{itemize}
+	
+	\item Vehicle longitudinal dynamics block;
+	
+	\item Transmission dynamics block;
+	
+	\item Mapped motor block.
+	
+\end{itemize}
+
+Let us start the description from this last block.
+
+\section{Mapped motor}
+
+This first block is used to implement a mapped motor and drive electronics operating in torque control mode: the output torque tracks a reference demand one, directly coming from the output of the PID controller. This torque will be one of the possible input of the next block, the Transmission Dynamics one. Particularly, from the output of the PID controller we could have a positive torque if the vehicle needs to accelerate, or a negative torque if the car needs to brake: the first one will be above mentioned input of the Mapped Motor block, the latter one will be directly applied to the brake system in the Transmission Dynamics block.
+
+\section{Transmission Dynamics}
+
+
+
+Thanks to this block //da completare
+ 
+ \begin{figure}[htbp]
+ 	\centering
+ 	\includegraphics[scale=0.8]{TransmissionDynamics.jpg}
+ 	\caption{Transmission Dynamics block}
+ \end{figure}
+
+The torque is the output of a mapped motor block, of course modified by a gear ratio block that models the one-speed transmission of the electric vehicle.
+
+
+to model the longitudinal dynamics of the vehicle we picked from the Simscape Driveline library the “vehicle longitudinal dynamics” block.
 
 
 We wanted to make some more detailed simulation so we decided to model the driveline system.
@@ -53,7 +86,7 @@ The vehicle dynamics block accepts as input the long speed of the vehicle, we as
 
 The simscape wheels block model the behaviour of a the wheel in terms of inertia, rolling resistance and slip. The angular speed of the wheel is proportional to the torque given as input.
 
-The torque is the output of a mapped motor block, of course modified by a gear ratio block that models the one-speed transmission of the electric vehicle.
+
 
 When a negative torque is asked, the brake block provides a negative torque at the wheel input.
 
