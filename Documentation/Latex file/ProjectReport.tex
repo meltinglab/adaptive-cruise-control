@@ -66,7 +66,7 @@ This first block is used to implement a mapped motor and drive electronics opera
 
 
 
-Thanks to this block //da completare
+Thanks to this block it is possible to model the entire driveline, from the ECU torque request to the wheels motion.
  
  \begin{figure}[htbp]
  	\centering
@@ -74,23 +74,28 @@ Thanks to this block //da completare
  	\caption{Transmission Dynamics block}
  \end{figure}
 
-The torque is the output of a mapped motor block, of course modified by a gear ratio block that models the one-speed transmission of the electric vehicle.
+As anticipated before, this block has two inputs:
+\begin{itemize}
+	
+	\item The positive torque input, output of the Mapped motor block; 
+	
+	\item The negative torque input, output of the PID controller.
+	
+\end{itemize}
+
+In the first case, the torque is modified by a gear ratio block which models the one-speed transmission of the electric vehicle. Conversely, when a negative torque is asked, the brake block provides a negative torque directly at the wheel input. Then, the Simscape wheels blocks model the behaviour of the wheels in terms of inertia, rolling resistance and slip, giving us an angular speed of the wheel that is proportional to the torque given as input.
 
 
-to model the longitudinal dynamics of the vehicle we picked from the Simscape Driveline library the “vehicle longitudinal dynamics” block.
+//da completare
+To model the longitudinal dynamics of the vehicle we picked from the Simscape Driveline library the “vehicle longitudinal dynamics” block.
 
 
 We wanted to make some more detailed simulation so we decided to model the driveline system.
 
 The vehicle dynamics block accepts as input the long speed of the vehicle, we associated it to the long speed of the CoG of the wheels.
 
-The simscape wheels block model the behaviour of a the wheel in terms of inertia, rolling resistance and slip. The angular speed of the wheel is proportional to the torque given as input.
 
 
-
-When a negative torque is asked, the brake block provides a negative torque at the wheel input.
-
-With this plant model we wanted to model the entire driveline from the ECU torque request to the wheels motion.
 
 \chapter{Project development}
 
