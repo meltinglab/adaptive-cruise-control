@@ -85,15 +85,26 @@ As anticipated before, this block has two inputs:
 
 In the first case, the torque is modified by a gear ratio block which models the one-speed transmission of the electric vehicle. Conversely, when a negative torque is asked, the brake block provides a negative torque directly at the wheel input. Then, the Simscape wheels blocks model the behaviour of the wheels in terms of inertia, rolling resistance and slip, giving us an angular speed of the wheel that is proportional to the torque given as input.
 
-
-//da completare
-To model the longitudinal dynamics of the vehicle we picked from the Simscape Driveline library the “vehicle longitudinal dynamics” block.
+\section{Vehicle longitudinal dynamics}
 
 
-We wanted to make some more detailed simulation so we decided to model the driveline system.
+Finally, to model the longitudinal dynamics of the vehicle, from the Simscape Driveline library the “vehicle longitudinal dynamics” block was picked.
 
-The vehicle dynamics block accepts as input the long speed of the vehicle, we associated it to the long speed of the CoG of the wheels.
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.5]{LongitudinalDynamic.jpg}
+	\caption{Vehicle longitudinal dynamics block}
+\end{figure}
+
+This block represents a two-axle vehicle body in longitudinal motion: it accounts for body mass, aerodynamic drag, road incline, headwind speed (in our simulations they are not considered influencing quantities)and weight distribution between axles due to acceleration and road profile. The block accepts as input the resulting traction motion developed by tires (that is to say, the output of the Simscape wheels blocks), giving as output the vehicle velocity and also the front normal wheel forces.\\
+Finally, from this block is also emulated the radar function, that is to say the monitoring of the distance between this vehicle and the first one: in fact, thanks to the presence of an integrator block, from the actual speed of the vehicle its position is computed. Then this position is fed back and subtracted to the position of the first vehicle, giving us the resulting radar distance.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics{RadarFunction.jpg}
+	\caption{Emulation of the radar function}
+\end{figure}
 
 
 
