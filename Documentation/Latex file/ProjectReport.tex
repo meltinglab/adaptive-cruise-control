@@ -33,19 +33,128 @@
 
 
 \chapter{Model explanation \& design}
-The aim of this project is to design an adaptive cruise control, to design it following the MBD we of course needed a plant that models the vehicle longitudinal dynamics.
-In \textbf{\textit{FIGURE}} you can see the whole plant model.
-To model the longitudinal dynamics of the vehicle we picked from the simscape driveline library the “vehicle longitudinal dynamics” block.
-We wanted to make some more detailed simulation so we decided to model the driveline system.
-The vehicle dynamics block accepts as input the long speed of the vehicle, we associated it to the long speed of the CoG of the wheels.
-The simscape wheels block model the behaviour of a the wheel in terms of inertia, rolling resistance and slip. The angular speed of the wheel is proportional to the torque given as input.
-The torque is the output of a mapped motor block, of course modifyed by a gear ratio block that models the one-speed transmission of the electric vehicle.
-When a negative torque is asked, the brake block provides a negative torque at the wheel input.
-With this plant model we wanted to model the entire driveline from the ECU torque request to the wheels motion.
+As anticipated before, the aim of this project is to design an Adaptive Cruise Control: to design it following the MBD, we of course need a plant that models the vehicle longitudinal dynamics.
+In Fig \ref{Plant} it is possible to see the whole plant model.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.5]{Plant.jpg}
+	\caption{Plant}
+	\label{Plant}
+\end{figure}
+
+
+Going deeper, it is possible to see that it consists of three main blocks:
+
+\begin{itemize}
+	
+	\item Vehicle longitudinal dynamics block;
+	
+	\item Transmission dynamics block;
+	
+	\item Mapped motor block.
+	
+\end{itemize}
+
+Let us start the description from this last block.
+
+\section{Mapped motor}
+
+This first block is used to implement a mapped motor and drive electronics operating in torque control mode: the output torque tracks a reference demand one, directly coming from the output of the PID controller. This torque will be one of the possible input of the next block, the Transmission Dynamics one. Particularly, from the output of the PID controller we could have a positive torque if the vehicle needs to accelerate, or a negative torque if the car needs to brake: the first one will be above mentioned input of the Mapped Motor block, the latter one will be directly applied to the brake system in the Transmission Dynamics block.
+
+\section{Transmission Dynamics}
+
+
+
+Thanks to this block it is possible to model the entire driveline, from the ECU torque request to the wheels motion.
+ 
+ \begin{figure}[htbp]
+ 	\centering
+ 	\includegraphics[scale=0.8]{TransmissionDynamics.jpg}
+ 	\caption{Transmission Dynamics block}
+ \end{figure}
+
+As anticipated before, this block has two inputs:
+\begin{itemize}
+	
+	\item The positive torque input, output of the Mapped motor block; 
+	
+	\item The negative torque input, output of the PID controller.
+	
+\end{itemize}
+
+In the first case, the torque is modified by a gear ratio block which models the one-speed transmission of the electric vehicle. Conversely, when a negative torque is asked, the brake block provides a negative torque directly at the wheel input. Then, the Simscape wheels blocks model the behaviour of the wheels in terms of inertia, rolling resistance and slip, giving us an angular speed of the wheel that is proportional to the torque given as input.
+
+\section{Vehicle longitudinal dynamics}
+
+
+Finally, to model the longitudinal dynamics of the vehicle, from the Simscape Driveline library the “vehicle longitudinal dynamics” block was picked.
+
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.5]{LongitudinalDynamic.jpg}
+	\caption{Vehicle longitudinal dynamics block}
+\end{figure}
+
+This block represents a two-axle vehicle body in longitudinal motion: it accounts for body mass, aerodynamic drag, road incline, headwind speed (in our simulations they are not considered influencing quantities)and weight distribution between axles due to acceleration and road profile. The block accepts as input the resulting traction motion developed by tires (that is to say, the output of the Simscape wheels blocks), giving as output the vehicle velocity and also the front normal wheel forces.\\
+Finally, from this block is also emulated the radar function, that is to say the monitoring of the distance between this vehicle and the first one: in fact, thanks to the presence of an integrator block, from the actual speed of the vehicle its position is computed. Then this position is fed back and subtracted to the position of the first vehicle, giving us the resulting radar distance.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics{RadarFunction.jpg}
+	\caption{Emulation of the radar function}
+\end{figure}
+
+
 
 \chapter{Project development}
 
 \section{Requirements}
+\subsection{Software requirements}
+
+In order to be able to interact with the developed model, some software tools are needed:
+
+\begin{itemize}
+	
+	\item Matlab R2019b;
+	
+	\item Simulink;
+	
+	\item Simscape;
+	
+	\item Simscape Driveline.
+	
+\end{itemize}
+
+\subsection{High level requirements}
+
+The goal of the overall control system is to extend the mission of the simpler Cruise Control: regulate the speed to the desired one and keep it. In addition respect this goal, the Adaptive Cruise Control adapts the speed of the vehicle respect the velocity of the following one, being able to correctly mantain the safety distance dictated by the Highway Code when it needed (that is to say, when the current distance between the vehicles is lower than the required safety distance):
+
+\begin{equation*}
+	d_s=d_{min}+\dfrac{1}{k}v^2
+\end{equation*}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics{ACC.jpg}
+	\caption{ACC}
+\end{figure}
+
+\subsection{Low level requirements}
+The designed system is intended to work on an electric vehicle, considering also the state of charge of the battery: particularly, the overall behaviour of the control action will be more or less aggressive depending on the state of charge level.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics{RadarACC.jpg}
+	\caption{Front radar}
+\end{figure}
+
+Thanks to the presence of a sensor (typically a radar installed in the front of the car), the distance respect the following vehicle is continuosly monitored: when this distance falls below the threshold dictated by the Highway Code minus a safety margin quantity (one meter as dictated by requirement, to be sure to be able to brake in the correct timings), the control must act on the brakes. Then, during the acceleration phase, the system needs to be designed as following: when the first vehicle accelerates, the control must operate so that the vehicle speed becomes the one desired if it is possible,  that is to say if the two vehicles are far enough. Otherwise, the system must adequate the vehicle speed to the one needed to keep the safety distance.
+
+
+
+
 \section{Unity \& Integration testing}
 \begin{figure}[!h]
 	\centering
