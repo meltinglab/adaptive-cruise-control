@@ -55,7 +55,7 @@ With this plant model we wanted to model the entire driveline from the ECU torqu
 \end{figure}
 Our controller is composed by 4 main blocks: switch\_subsys, SoC handler, torque\_split and the PID regulator.
 While it is impossible to test the PID behaviour without a model to be controlled, it is necessary to test separately the other blocks.
-We tested the units using the tool Simulink Test. We first built an harness for each unity to isolate it from the rest of the model, then we built the input signals in such a way to stimulate the unity in all possible conditions. We also built the baseline signals to tell the tester what output we expected when feeding the unity with a given input. 
+We tested the units using the tool Simulink Test. We first built an harness for each unity to isolate it from the rest of the model, then we built the input signals in such a way to stimulate the unity in all possible conditions. We also built the baseline signals to tell the tester what output we expected when feeding the unity a given input. 
 \newpage
 \subsection{Switch subsystem}
 \begin{figure}[!h]
@@ -65,21 +65,22 @@ We tested the units using the tool Simulink Test. We first built an harness for 
 	\label{switch_subs}
 \end{figure}
 \FloatBarrier
-This system is composed of a switch commanded by a majority operetor fed with the same signals that have to be switched. We wanted to be shure that this small unity would have behaved as expected. 
-In Fig \ref{IO_baseline_switch_detach} we can see the inputs that we used to test the unit: we wanted to test all the possible conditions for the ‘grater than’ block. To better visualize wich signal was let pass by the sitch we ttried to differenciate as much as possible the two inputs.
+This system is composed of a switch commanded by a majority operator fed with the same signals that have to be switched. We wanted to be shure that this small unity would behave as expected. 
+In Fig \ref{IO_baseline_switch_detach} we can see the inputs that we used to test the unit: we wanted to test all the possible conditions for the ‘grater than’ block. To better visualize which signal was let go by the switch we tried to differentiate as much as possible the two inputs.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.4]{IO_baseline_switch_detach.eps}
 	\caption{Inputs of the test: acceptable speed is the one set by the user, target speed is the one of the care ahead}
 	\label{IO_baseline_switch_detach}
 \end{figure}
-As we can see [FIGURE] the simulink test tool is able to generate a document reporting the configuration of the test, to guarantee to the customer (we can call costumer whoever will need to use our subsystem and will need it being tested) that the test was performed accordingly to his needs. This feature also gives the opportunity to an external part to perform the exact same test and verify that the results are coherent.
-In the same way the tool can generate a report regarding the output of the test, here in Fig. \ref{switch_baseline} we can see that the test produces successful results, infact the output of the test coincides precisely with our baseline signal. 
-%PUT BOTH THE FIGURES IN ONE FIGURE SIDE BY SIDE
+As we can see Fig. \ref{switch_baseline} (right) the Simulink test tool is able to generate a document reporting the configuration of the test, to guarantee to the customer (we can call costumer whoever will need to use our subsystem and will need it being tested) that the test was performed accordingly to his needs. This feature also gives the opportunity to an external part to perform the exact same test and verify that the results are coherent.
+In the same way the tool can generate a report regarding the output of the test, here in Fig. \ref{switch_baseline} (left) we can see that the test produces successful results, in fact the output of the test coincides precisely with our baseline signal. 
+ %PUT BOTH THE FIGURES IN ONE FIGURE SIDE BY SIDE
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.4]{switch_baseline.jpg}
-	\caption{Automatiacally generated test reports}
+	\includegraphics[scale=0.4]{switch_tes_spec.jpg}
+	\caption{Automatically generated test reports}
 	\label{switch_baseline}
 \end{figure}
 \FloatBarrier
@@ -90,8 +91,8 @@ In the same way the tool can generate a report regarding the output of the test,
 	\caption{An overview of the torque split subsystem}
 	\label{split_subs}
 \end{figure}
-This unit’s goal is to split the signal coming from the PID, asking for torque. The PID asks for a negative or positive torque, we have to be able to translate the negative torque in a signal to be sent to the brake module. This unit’s goal is to devide the torque signal into two signals depending on the sign of the PID output. To test this unit we just had to verify that when given a positive input it was tranferred to output assigned to the engine and when given a negative input it was transferred to the brake output. At the same time the ouput assigned to the opposite sign has to be zero.
-In Fig. \ref{input_split_test} you can see how the test input was designed and you can see that the output corresponds exacly to the baseline signal, meaning a successful test.
+This unit’s goal is to split the signal coming from the PID, asking for torque. The PID asks for a negative or positive torque, we have to be able to translate the negative torque in a signal to be sent to the brake module. This unit’s goal is to divide the torque signal into two signals depending on the sign of the PID output. To test this unit we just had to verify that when given a positive input it was transferred to output assigned to the engine and when given a negative input it was transferred to the brake output. At the same time the output assigned to the opposite sign has to be zero.
+In Fig. \ref{input_split_test} you can see how the test input was designed and you can see that the output corresponds exactly to the baseline signal, meaning a successful test.
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.4]{input_split_test}\hfill
@@ -108,7 +109,7 @@ In Fig. \ref{input_split_test} you can see how the test input was designed and y
 	\label{SoC_handle_subs}
 \end{figure}
 \FloatBarrier
-This unit is a FSM, so a slightly more complicated test is due. The goal of this uniti s to manage the aggressiveness of the control depending on the SoC of the vehicle’s battery pack. We want a less aggressive control if the car has less autonomy left. We divided the interval of possible SoC values in three segments: minumum, medium, maximum. Each segment corresponds to a different state. We have three states, since from each state you can go to the other two we have in total 6 transitions.  We have only one input: SoC signal. In the input signal, wich you can see in Fig.\ref{SoC_handle_input}, we changed the signal in order to stimulate all the possible transitions. 
+This unit is a FSM, so a slightly more complicated test is due. The goal of this unit is to manage the aggressiveness of the control depending on the SoC of the vehicle’s battery pack. We want a less aggressive control if the car has less autonomy left. We divided the interval of possible SoC values in three segments: minimum, medium, maximum. Each segment corresponds to a different state. We have three states, since from each state you can go to the other two we have in total 6 transitions.  We have only one input: SoC signal. In the input signal, wich you can see in Fig.\ref{SoC_handle_input}, we changed the signal in order to stimulate all the possible transitions. 
 To be more robust against unexpected behaviour we wanted an additional output for the FSM. The SoC signal is expected to never trespass the 0\% and 100\% bounds, so we created a signal “OutOfRange” that rises when this condition is verified. The FSM is designed to check constantly the OTR signal while performing the ordinary tasks, so a parallel state is created in the FSM.
 \begin{figure}[!h]
 	\centering
@@ -124,10 +125,10 @@ To be more robust against unexpected behaviour we wanted an additional output fo
 	\label{OTR_baseline_result}
 \end{figure}
 We also tested the behaviour of this signal. In Fig.\ref{SoC_handle_input} you can deduce from the input signal (second half of the signal) that we wanted to test that regardless the state in wich we were and the previous value of the SoC signal, the OTR signal would raise when expected to.
-In Fig.\ref{OTR_baseline_result} you can see that the output signal matches the baseline, meaning a succesful test.
+In Fig.\ref{OTR_baseline_result} you can see that the output signal matches the baseline, meaning a successful test.
 \FloatBarrier
 \subsection{Integration test}
-All these units cooperate in the same controller module, so an integration test would be necessary. In our specific case these three units do not have in common any input or output, meaning that there is no possible integration test to be performed. All theese units are meant to condition the PID behaviour, so in order to perform an integration test the PID would have to be involved. Since we assume the PID block itself already test by MATLAB there is no point in testing the PID behaviour when not regulating a plant model.
+All these units cooperate in the same controller module, so an integration test would be necessary. In our specific case these three units do not have in common any input or output, meaning that there is no possible integration test to be performed. All these units are meant to condition the PID behaviour, so in order to perform an integration test the PID would have to be involved. Since we assume the PID block itself already test by MATLAB there is no point in testing the PID behaviour when not regulating a plant model.
 According to the previous affirmations we decided to let the integration test coincide with the MIL test, in order to test the behaviour of the whole controller.
 
 \section{MIL}
