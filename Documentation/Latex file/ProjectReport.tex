@@ -25,10 +25,52 @@
 \listoffigures
 
 \chapter{Introduction}
+The reason for the choise of the Adaptive Cruise Control is because is one of the most used feature of the ADAS. ADAS (Advance Driver Assistance Systems) are the electronic systems that assist drivers in driving and parking functions. ADAS increases car and road safety, uses automated technology, such as sensors and cameras.\\ More and more vehicles are equipped with it, often as standard, and the Adaptive cruise control is one of the most advanced technology and able to facilitate the driving.\\
+Adaptive cruise control (ACC) is an active safety system that automatically controls the acceleration and braking of a vehicle. It is activated through a button on the steering wheel and cancelled by driver’s braking and/or another button.
+The report offers an example that illustrates the benefits of using the Model-Based Design in the engineering workflow.
+The goal is to show how this approach can be used in the entire development of the system design.\\
+The report is divided in these following section:
+\begin{itemize}
+	\item in $Chapter 2$ there is Project organization, where it is explains the model based design and the team organization
+	\item in $Chapter 3$ it is offers the Model explanation and design of the Adaptive cruise control
+	\item in $Chapter 4$ there are all the various steps for the project development. Starting from the Unity test, then with the MIL, the automated generated code and then with the SIL and PIL simultion.
+	\item Finally, in $Chapter 5$ there is the conclusion with the future developments.
+\end{itemize}
 
 \chapter{Project organization}
-
+\section{Hardware and software components}
+All the hardware and software components used to realize the prrject are listed here:
+\subsection{Hardware}
+The hardware used for this project is rather simple: PC running Windows and a Raspberry Pi 4 Model B.\\
+The Raspberry has been used as core component of the processor in-the-loop simulation.
+\subsection{Software}
+Software employed for this project is Simulink: Embedded Coder package, Simscape package, Powertrain Blockset are required.
+Software employed to organize the work and the communication between team members:
+\begin{itemize}
+	\item GitHub
+	\item LaTeX: for the realization of the documentations
+	\item Microsoft Teams: for the meetings
+	\item Draw-io: for the graphs realization
+\end{itemize}
 \section{Model based design}
+The realization of the project is based on the V-model, which is one of the most used approaches in the model-based design. The V-Model demonstartes the relationships between each phase of the development lif cycle and its associated phase od testing.  The horizontal and vertical axes represents time or project completeness (left-to-right) and level of abstraction, respectively. \\
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.6]{v-model.png}
+	\caption{The V-model}
+\end{figure}
+\FloatBarrier
+The project definition phases are:
+\begin{itemize}
+	\item \textbf{Requirement}: evaluation of the model requirements, planned how to proceed with the following steps and fixed the final goals.
+	\item \textbf{System definition}: define the high-level design for the model.
+	\item \textbf{Plant simulation}: it is realized the simulation of the plant using Simulink.
+	\item \textbf{Automatic code generation}: using Embedded Coder to generale the low-level code for the controller.
+	\item \textbf{PIL}: the code generated was deployed to hardware, and the processo in-the-loop has been performed.
+	\item \textbf{HIL}: here, the plant should be simulated in HIL module. This step, due to the available instrumentaions, it could not be implemented.
+	\item \textbf{Acceptance}: the real plant is realized, integration tests are performed. Again, no possibility to perform this step.
+\end{itemize}
+\FloatBarrier
 \section{Team organization}
 
 
@@ -241,6 +283,43 @@ According to the previous affirmations we decided to let the integration test co
 
 \section{MIL}
 \section{SIL}
+\section{Automatic code generation}
+\textbf{Embedded Coder} is on of the tools uses for the automatic generation of code. It is a feature really used by the developers and engineers that automatically generates their code without writing thousands of lines and improve the quality and avoid the errors introduced manually. 
+Embedded Coder generate readable, compact and fast C and C++ code for embedded processors. \\
+The generated code is ISO C compliant, so it can run on virtually any fixed- or floating-point device and is well suited for applications that need to minimize memory usage or maximize speed. \\
+Embedded coder allows to review and navigate from model to generated code and back using code reports with traceability links. It is also possible to verify that the code execution matches model simulation results using software-in-the-loop and processor-in-the-loop testing. SIL and PIL tests can also include code coverage analysis and execution profiling. \\
+Embedded Coder offers built-in support for AUTOSAR, MISRA C®, and ASAP2 software standards. In addition, it offers support packages with advance optimization and device drivers for specific hardware.
+Matlab and Simulink offer the \textbf{Embedded Coder} to generate C/C++ code from Matlab and Simulink model or subsystem. \\
+To generate the code it is possible to estabilish the objectivies using the Code Generation Advisor in order to check that the controller is MISRA C compliant.\\
+
+\subsection{Prepare a Model for Code Generarion}
+At first it is needed to prepare a Model for Code Generation:
+\begin{enumerate}
+	\item Open the \textbf{C Code} tab, click \textbf{Settings} to open the Configuration Parameter dialog blox (or use the shortcut \textbf{Ctrl+E}).\\
+	Then select \textbf{Simulation $\to$ Model Configuration parameters}
+	\item Open the \textbf{Solver} pane and select:
+	\begin{itemize}
+		\item \textbf{Solver type}: Fixed-Step.
+		\item  \textbf{Solver}: discrete.
+	\end{itemize}
+	\item Open the \textbf{Optimization} pane, and set Default parameter behavior to Inlined.
+	\item Open the \textbf{Code Generation} pane, and specify ert.tlc as the System Target File.
+	\item Clear \textbf{Generate makefile}.
+	\item Select \textbf{Generate code only}.
+	\item Enable the HTML report generation by opening the \textbf{Code Generation $\to$ Report} pane and selecting Create code generation report and Open report automatically. Click the horizontal ellipsis and, under Advanced parameters, select \textbf{Code-to-model}. Enabling the HTML report generation is optional.
+	\item Click Apply and then OK to exit.
+\end{enumerate}
+\subsection{Generate Code using Ebedded Coder}
+The steps that must be followed are:
+\begin{enumerate}
+	\item Open the model that contains the block. 
+	\item In the Code Generation Advisor, click Set Objectivies. Is an important step in which it is possible to check the coding standard compliance. There are different objectivies that can be selected and it is possible to select and prioritize the combination of objectivie before generating the code.
+	\item On the C Code tab, click Quick Start.
+	\item In the Generate Code step, apply the proposed changes and generate code by clicking Next.
+	\item Click Finish, then return to the C Code tab. From this it is possible to configure code generation customizations, and then check the results in the Code view next to the model.
+	\item With the right clock o the component it is possible to build the process and going to C/C++ Code Generation, then click on \textbf{Build}.
+	\item View the code generation report.
+\end{enumerate}
 \section{PIL}
 
 
