@@ -1,0 +1,684 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.10) (preloaded format=pdflatex 2020.10.13)  3 MAY 2021 22:17
+entering extended mode
+**./ProjectReport.tex
+(ProjectReport.tex
+LaTeX2e <2020-10-01> patch level 1
+L3 programming layer <2020-10-05> xparse <2020-03-03>
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
+Document Class: report 2020/04/10 v1.4m Standard LaTeX document class
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
+File: size12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+)
+\c@part=\count175
+\c@chapter=\count176
+\c@section=\count177
+\c@subsection=\count178
+\c@subsubsection=\count179
+\c@paragraph=\count180
+\c@subparagraph=\count181
+\c@figure=\count182
+\c@table=\count183
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2020/09/23 v2.17i AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks15
+\ex@=\dimen139
+))
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen140
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count184
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count185
+\leftroot@=\count186
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count187
+\DOTSCASE@=\count188
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box47
+\strutbox@=\box48
+\big@size=\dimen141
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count189
+\c@MaxMatrixCols=\count190
+\dotsspace@=\muskip16
+\c@parentequation=\count191
+\dspbrk@lvl=\count192
+\tag@help=\toks16
+\row@=\count193
+\column@=\count194
+\maxfields@=\count195
+\andhelp@=\toks17
+\eqnshift@=\dimen142
+\alignsep@=\dimen143
+\tagshift@=\dimen144
+\tagwidth@=\dimen145
+\totwidth@=\dimen146
+\lineht@=\dimen147
+\@envbody=\toks18
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks20
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/generic/kvsetkeys\kvsetkeys.s
+ty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro
+.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+)
+\@linkdim=\dimen148
+\Hy@linkcounter=\count196
+\Hy@pagecounter=\count197
+ (C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count198
+Package hyperref Info: Hyper figures OFF on input line 4464.
+Package hyperref Info: Link nesting OFF on input line 4469.
+Package hyperref Info: Hyper index ON on input line 4472.
+Package hyperref Info: Plain pages OFF on input line 4479.
+Package hyperref Info: Backreferencing OFF on input line 4484.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4717.
+\c@Hy@tempcnt=\count199
+ (C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5076.
+\XeTeXLinkMargin=\dimen149
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count266
+\Field@Width=\dimen150
+\Fld@charsize=\dimen151
+Package hyperref Info: Hyper figures OFF on input line 6347.
+Package hyperref Info: Link nesting OFF on input line 6352.
+Package hyperref Info: Hyper index ON on input line 6355.
+Package hyperref Info: backreferencing OFF on input line 6362.
+Package hyperref Info: Link coloring OFF on input line 6367.
+Package hyperref Info: Link coloring with OCG OFF on input line 6372.
+Package hyperref Info: PDF/A mode OFF on input line 6377.
+LaTeX Info: Redefining \ref on input line 6417.
+LaTeX Info: Redefining \pageref on input line 6421.
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
+ge
+with kernel methods
+)
+\Hy@abspage=\count267
+\c@Item=\count268
+\c@Hfootnote=\count269
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2020-05-15 v7.00e Hyperref driver for pdfTeX
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
+e
+with kernel methods
+)
+\Fld@listcount=\count270
+\c@bookmark@seq@number=\count271
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip52
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/comment\comment.sty
+\CommentStream=\write3
+
+Excluding comment 'comment')
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen152
+\Gin@req@width=\dimen153
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count272
+\Gm@cntv=\count273
+\c@Gm@tempcnt=\count274
+\Gm@bindingoffset=\dimen154
+\Gm@wd@mp=\dimen155
+\Gm@odd@mp=\dimen156
+\Gm@even@mp=\dimen157
+\Gm@layoutwidth=\dimen158
+\Gm@layoutheight=\dimen159
+\Gm@layouthoffset=\dimen160
+\Gm@layoutvoffset=\dimen161
+\Gm@dimlist=\toks21
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
+File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
+\l__kernel_color_stack_int=\count275
+\l__pdf_internal_box=\box49
+) (ProjectReport.aux)
+\openout1 = `ProjectReport.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+Package hyperref Info: Link coloring OFF on input line 11.
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count276
+)
+LaTeX Info: Redefining \ref on input line 11.
+LaTeX Info: Redefining \pageref on input line 11.
+LaTeX Info: Redefining \nameref on input line 11.
+ (ProjectReport.out) (ProjectReport.out)
+\@outlinefile=\write4
+\openout4 = `ProjectReport.out'.
+
+
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count277
+\scratchdimen=\dimen162
+\scratchbox=\box50
+\nofMPsegments=\count278
+\nofMParguments=\count279
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count280
+\MPscratchDim=\dimen163
+\MPnumerator=\count281
+\makeMPintoPDFobject=\count282
+\everyMPtoPDFconversion=\toks23
+)
+(C:\Users\Lucia\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+[1
+
+{C:/Users/Lucia/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
+(ProjectReport.toc)
+\tf@toc=\write5
+\openout5 = `ProjectReport.toc'.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.25 \listoffigures
+                    [1
+
+] (ProjectReport.lof)
+\tf@lof=\write6
+\openout6 = `ProjectReport.lof'.
+
+ [2
+
+]
+Chapter 1.
+[3
+
+]
+Chapter 2.
+<./Images//v-model.png, id=199, 669.50125pt x 364.36125pt>
+File: ./Images//v-model.png Graphic file (type png)
+<use ./Images//v-model.png>
+Package pdftex.def Info: ./Images//v-model.png  used on input line 60.
+(pdftex.def)             Requested size: 401.70384pt x 218.61842pt.
+[4
+
+] [5 <./Images//v-model.png>]
+Chapter 3.
+<./Images//Plant.jpg, id=211, 922.04475pt x 209.583pt>
+File: ./Images//Plant.jpg Graphic file (type jpg)
+<use ./Images//Plant.jpg>
+Package pdftex.def Info: ./Images//Plant.jpg  used on input line 84.
+(pdftex.def)             Requested size: 461.02126pt x 104.79123pt.
+
+Overfull \hbox (5.77715pt too wide) in paragraph at lines 84--85
+ [][] 
+ []
+
+<./Images//TransmissionDynamics.jpg, id=212, 510.10574pt x 289.08pt>
+File: ./Images//TransmissionDynamics.jpg Graphic file (type jpg)
+<use ./Images//TransmissionDynamics.jpg>
+Package pdftex.def Info: ./Images//TransmissionDynamics.jpg  used on input line
+ 116.
+(pdftex.def)             Requested size: 408.08514pt x 231.2643pt.
+[6
+
+ <./Images//Plant.jpg>]
+<./Images//LongitudinalDynamic.jpg, id=218, 813.63976pt x 393.26926pt>
+File: ./Images//LongitudinalDynamic.jpg Graphic file (type jpg)
+<use ./Images//LongitudinalDynamic.jpg>
+Package pdftex.def Info: ./Images//LongitudinalDynamic.jpg  used on input line 
+139.
+(pdftex.def)             Requested size: 406.81888pt x 196.63414pt.
+<./Images//RadarFunction.jpg, id=219, 419.166pt x 102.98476pt>
+File: ./Images//RadarFunction.jpg Graphic file (type jpg)
+<use ./Images//RadarFunction.jpg>
+Package pdftex.def Info: ./Images//RadarFunction.jpg  used on input line 148.
+(pdftex.def)             Requested size: 419.16498pt x 102.98448pt.
+ [7 <./Images//TransmissionDynamics.jpg>] [8 <./Images//LongitudinalDynamic.jpg
+> <./Images//RadarFunction.jpg>]
+Chapter 4.
+<./Images//ACC.jpg, id=228, 431.81325pt x 261.3765pt>
+File: ./Images//ACC.jpg Graphic file (type jpg)
+<use ./Images//ACC.jpg>
+Package pdftex.def Info: ./Images//ACC.jpg  used on input line 183.
+(pdftex.def)             Requested size: 431.81218pt x 261.37584pt.
+<./Images//RadarACC.jpg, id=229, 435.42674pt x 259.56975pt>
+File: ./Images//RadarACC.jpg Graphic file (type jpg)
+<use ./Images//RadarACC.jpg>
+Package pdftex.def Info: ./Images//RadarACC.jpg  used on input line 192.
+(pdftex.def)             Requested size: 435.42567pt x 259.5691pt.
+[9
+
+] [10 <./Images//ACC.jpg> <./Images//RadarACC.jpg>]
+<./Images//Controller_overview.jpg, id=240, 1349.79282pt x 334.24875pt>
+File: ./Images//Controller_overview.jpg Graphic file (type jpg)
+<use ./Images//Controller_overview.jpg>
+Package pdftex.def Info: ./Images//Controller_overview.jpg  used on input line 
+204.
+(pdftex.def)             Requested size: 458.9235pt x 113.64307pt.
+
+Overfull \hbox (3.67938pt too wide) in paragraph at lines 204--205
+ [][] 
+ []
+
+[11 <./Images//Controller_overview.jpg>]
+<./Images//switch_subs.jpg, id=245, 1357.32094pt x 329.73187pt>
+File: ./Images//switch_subs.jpg Graphic file (type jpg)
+<use ./Images//switch_subs.jpg>
+Package pdftex.def Info: ./Images//switch_subs.jpg  used on input line 215.
+(pdftex.def)             Requested size: 461.48302pt x 112.10735pt.
+
+Overfull \hbox (6.2389pt too wide) in paragraph at lines 215--216
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <./Images//IO_baseline_switch_detach.eps>
+(epstopdf)                    date: 2021-04-28 10:38:30
+(epstopdf)                    size: 19070 bytes
+(epstopdf)             Output file: <./Images//IO_baseline_switch_detach-eps-co
+nverted-to.pdf>
+(epstopdf)                    date: 2021-04-28 10:38:30
+(epstopdf)                    size: 7950 bytes
+(epstopdf)             Command: <epstopdf --outfile=./Images//IO_baseline_switc
+h_detach-eps-converted-to.pdf ./Images//IO_baseline_switch_detach.eps>
+(epstopdf)             \includegraphics on input line 224.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./Images//IO_baseline_switch_detach-eps-conv
+erted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5
+> allowed
+<./Images//IO_baseline_switch_detach-eps-converted-to.pdf, id=247, 1028.84375pt
+ x 489.83pt>
+File: ./Images//IO_baseline_switch_detach-eps-converted-to.pdf Graphic file (ty
+pe pdf)
+<use ./Images//IO_baseline_switch_detach-eps-converted-to.pdf>
+Package pdftex.def Info: ./Images//IO_baseline_switch_detach-eps-converted-to.p
+df  used on input line 224.
+(pdftex.def)             Requested size: 411.53021pt x 195.92853pt.
+<./Images//switch_baseline.jpg, id=250, 537.50812pt x 519.44063pt>
+File: ./Images//switch_baseline.jpg Graphic file (type jpg)
+<use ./Images//switch_baseline.jpg>
+Package pdftex.def Info: ./Images//switch_baseline.jpg  used on input line 233.
+
+(pdftex.def)             Requested size: 214.99944pt x 207.77257pt.
+<./Images//switch_tes_spec.jpg, id=251, 569.87906pt x 564.60938pt>
+File: ./Images//switch_tes_spec.jpg Graphic file (type jpg)
+<use ./Images//switch_tes_spec.jpg>
+Package pdftex.def Info: ./Images//switch_tes_spec.jpg  used on input line 234.
+
+(pdftex.def)             Requested size: 227.94757pt x 225.83974pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[12 <./Images//switch_subs.jpg> <./Images//IO_baseline_switch_detach-eps-conver
+ted-to.pdf>]
+<./Images//split_subs.jpg, id=265, 1358.07375pt x 320.69812pt>
+File: ./Images//split_subs.jpg Graphic file (type jpg)
+<use ./Images//split_subs.jpg>
+Package pdftex.def Info: ./Images//split_subs.jpg  used on input line 242.
+(pdftex.def)             Requested size: 461.73897pt x 109.0359pt.
+
+Overfull \hbox (6.49486pt too wide) in paragraph at lines 242--243
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <./Images//input_split_test.eps>
+(epstopdf)                    date: 2021-04-28 10:38:30
+(epstopdf)                    size: 113524 bytes
+(epstopdf)             Output file: <./Images//input_split_test-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2021-04-28 10:38:30
+(epstopdf)                    size: 43966 bytes
+(epstopdf)             Command: <epstopdf --outfile=./Images//input_split_test-
+eps-converted-to.pdf ./Images//input_split_test.eps>
+(epstopdf)             \includegraphics on input line 250.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./Images//input_split_test-eps-converted-to.
+pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+
+<./Images//input_split_test-eps-converted-to.pdf, id=267, 1028.84375pt x 489.83
+pt>
+File: ./Images//input_split_test-eps-converted-to.pdf Graphic file (type pdf)
+<use ./Images//input_split_test-eps-converted-to.pdf>
+Package pdftex.def Info: ./Images//input_split_test-eps-converted-to.pdf  used 
+on input line 250.
+(pdftex.def)             Requested size: 411.53021pt x 195.92853pt.
+Package epstopdf Info: Source file: <./Images//out_split_test.eps>
+(epstopdf)                    date: 2021-04-28 10:38:30
+(epstopdf)                    size: 24730 bytes
+(epstopdf)             Output file: <./Images//out_split_test-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2021-04-28 10:38:30
+(epstopdf)                    size: 9692 bytes
+(epstopdf)             Command: <epstopdf --outfile=./Images//out_split_test-ep
+s-converted-to.pdf ./Images//out_split_test.eps>
+(epstopdf)             \includegraphics on input line 251.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./Images//out_split_test-eps-converted-to.pd
+f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<./Images//out_split_test-eps-converted-to.pdf, id=268, 1028.84375pt x 489.83pt
+>
+File: ./Images//out_split_test-eps-converted-to.pdf Graphic file (type pdf)
+<use ./Images//out_split_test-eps-converted-to.pdf>
+Package pdftex.def Info: ./Images//out_split_test-eps-converted-to.pdf  used on
+ input line 251.
+(pdftex.def)             Requested size: 411.53021pt x 195.92853pt.
+[13 <./Images//switch_baseline.jpg> <./Images//switch_tes_spec.jpg> <./Images//
+split_subs.jpg>]
+<./Images//SoC_handle_subs.jpg, id=273, 1148.79187pt x 392.21532pt>
+File: ./Images//SoC_handle_subs.jpg Graphic file (type jpg)
+<use ./Images//SoC_handle_subs.jpg>
+Package pdftex.def Info: ./Images//SoC_handle_subs.jpg  used on input line 259.
+
+(pdftex.def)             Requested size: 390.58406pt x 133.35144pt.
+Package epstopdf Info: Source file: <./Images//SoC_handle_input.eps>
+(epstopdf)                    date: 2021-04-28 10:38:30
+(epstopdf)                    size: 20829 bytes
+(epstopdf)             Output file: <./Images//SoC_handle_input-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2021-04-28 10:38:30
+(epstopdf)                    size: 9182 bytes
+(epstopdf)             Command: <epstopdf --outfile=./Images//SoC_handle_input-
+eps-converted-to.pdf ./Images//SoC_handle_input.eps>
+(epstopdf)             \includegraphics on input line 268.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./Images//SoC_handle_input-eps-converted-to.
+pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+
+<./Images//SoC_handle_input-eps-converted-to.pdf, id=275, 1028.84375pt x 489.83
+pt>
+File: ./Images//SoC_handle_input-eps-converted-to.pdf Graphic file (type pdf)
+<use ./Images//SoC_handle_input-eps-converted-to.pdf>
+Package pdftex.def Info: ./Images//SoC_handle_input-eps-converted-to.pdf  used 
+on input line 268.
+(pdftex.def)             Requested size: 349.80225pt x 166.54pt.
+Package epstopdf Info: Source file: <./Images//OTR_baseline_result.eps>
+(epstopdf)                    date: 2021-04-28 10:38:30
+(epstopdf)                    size: 773714 bytes
+(epstopdf)             Output file: <./Images//OTR_baseline_result-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2021-04-28 10:38:30
+(epstopdf)                    size: 80513 bytes
+(epstopdf)             Command: <epstopdf --outfile=./Images//OTR_baseline_resu
+lt-eps-converted-to.pdf ./Images//OTR_baseline_result.eps>
+(epstopdf)             \includegraphics on input line 274.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./Images//OTR_baseline_result-eps-converted-
+to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allo
+wed
+<./Images//OTR_baseline_result-eps-converted-to.pdf, id=276, 1028.84375pt x 489
+.83pt>
+File: ./Images//OTR_baseline_result-eps-converted-to.pdf Graphic file (type pdf
+)
+<use ./Images//OTR_baseline_result-eps-converted-to.pdf>
+Package pdftex.def Info: ./Images//OTR_baseline_result-eps-converted-to.pdf  us
+ed on input line 274.
+(pdftex.def)             Requested size: 411.53021pt x 195.92853pt.
+Package epstopdf Info: Source file: <./Images//PidP_baseline_result.eps>
+(epstopdf)                    date: 2021-04-28 10:38:30
+(epstopdf)                    size: 703108 bytes
+(epstopdf)             Output file: <./Images//PidP_baseline_result-eps-convert
+ed-to.pdf>
+(epstopdf)                    date: 2021-04-28 10:38:30
+(epstopdf)                    size: 80280 bytes
+(epstopdf)             Command: <epstopdf --outfile=./Images//PidP_baseline_res
+ult-eps-converted-to.pdf ./Images//PidP_baseline_result.eps>
+(epstopdf)             \includegraphics on input line 275.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./Images//PidP_baseline_result-eps-converted
+-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> all
+owed
+<./Images//PidP_baseline_result-eps-converted-to.pdf, id=277, 1028.84375pt x 48
+9.83pt>
+File: ./Images//PidP_baseline_result-eps-converted-to.pdf Graphic file (type pd
+f)
+<use ./Images//PidP_baseline_result-eps-converted-to.pdf>
+Package pdftex.def Info: ./Images//PidP_baseline_result-eps-converted-to.pdf  u
+sed on input line 275.
+(pdftex.def)             Requested size: 411.53021pt x 195.92853pt.
+[14 <./Images//input_split_test-eps-converted-to.pdf> <./Images//out_split_test
+-eps-converted-to.pdf> <./Images//SoC_handle_subs.jpg>] [15 <./Images//SoC_hand
+le_input-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 289--296
+
+ []
+
+[16 <./Images//OTR_baseline_result-eps-converted-to.pdf> <./Images//PidP_baseli
+ne_result-eps-converted-to.pdf>] [17] [18]
+Chapter 5.
+[19
+
+] (ProjectReport.aux)
+Package rerunfilecheck Info: File `ProjectReport.out' has not changed.
+(rerunfilecheck)             Checksum: 016139B353C1C14E773D38FC753ACB43;1829.
+ ) 
+Here is how much of TeX's memory you used:
+ 6544 strings out of 480236
+ 103534 string characters out of 2880557
+ 406699 words of memory out of 3000000
+ 22883 multiletter control sequences out of 15000+200000
+ 542324 words of font info for 54 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 60i,7n,66p,783b,411s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\Lucia\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
+1200.pk><C:/Users/Lucia/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmbx12.pfb><C:/Users/Lucia/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmmi12.pfb><C:/Users/Lucia/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Lucia/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Lucia/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Lucia/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Lucia/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on ProjectReport.pdf (20 pages, 1052640 bytes).
+PDF statistics:
+ 409 PDF objects out of 1000 (max. 8388607)
+ 81 named destinations out of 1000 (max. 500000)
+ 320 words of extra memory for PDF output out of 10000 (max. 10000000)
+
