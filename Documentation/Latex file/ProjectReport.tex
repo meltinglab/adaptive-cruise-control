@@ -23,7 +23,7 @@
 	
 \tableofcontents
 \listoffigures
-% comment
+
 
 \chapter{Introduction}
 The reason for the choise of the Adaptive Cruise Control is because is one of the most used feature of the ADAS. ADAS (Advance Driver Assistance Systems) are the electronic systems that assist drivers in driving and parking functions. ADAS increases car and road safety, uses automated technology, such as sensors and cameras.\\ More and more vehicles are equipped with it, often as standard, and the Adaptive cruise control is one of the most advanced technology and able to facilitate the driving.\\
@@ -371,8 +371,40 @@ The simulation results are represented in the following figure:
 \end{figure} \FloatBarrier
 
 It is possible to see that the difference between the two simulations is negligible, so the whole result is acceptable.
-\section{PIL}
+\section{Processor in-the-loop Simulation (PIL)}
 
+The chosen hardware for the simulation is the Raspberry Pi 4 model B, equipped with quad-core processor (ARM-cortex), is wireless connected to PC.
+To provide a stable connection between hardware and Simulink it is necessary to set properly the device address (IP address) and the credential of the OS system for privileged read/write operation.
+
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.8]{hw_implementation.png}
+	\caption{Hardware settings}
+\end{figure} \FloatBarrier
+
+The generation of the code is widely described above on the SIL section and the procedure for generation of the PIL block is the same as for SIL.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.7]{PIL_block.png}
+	\caption{PIL block}
+\end{figure} \FloatBarrier
+Once the controller is replaced by PIL block, the entire code is deployed on Raspberry board and the simulation starts. 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.7]{PIL_sim.png}
+	\caption{Simulation PIL block}
+\end{figure} \FloatBarrier
+From the comparison simulation can be noticed the difference between the longitudinal speed of original Simulink model and the one of PIL model.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=1]{plot_PIL.png}
+	\caption{Difference in longitudinal speed of the original Simulink model and the PIL model}
+\end{figure} \FloatBarrier
+
+The overall result is acceptable.
+The difference between the two simulation is negligible and bounded in a very short range.
 
 \chapter{Conclusion}
 	
