@@ -284,7 +284,7 @@ All these units cooperate in the same controller module, so an integration test 
 According to the previous affirmations we decided to let the integration test coincide with the MIL test, in order to test the behaviour of the whole controller.
 
 \section{MIL}
-\section{SIL}
+
 \section{Automatic code generation}
 \textbf{Embedded Coder} is on of the tools uses for the automatic generation of code. It is a feature really used by the developers and engineers that automatically generates their code without writing thousands of lines and improve the quality and avoid the errors introduced manually. 
 Embedded Coder generate readable, compact and fast C and C++ code for embedded processors. \\
@@ -322,6 +322,55 @@ The steps that must be followed are:
 	\item With the right clock o the component it is possible to build the process and going to C/C++ Code Generation, then click on \textbf{Build}.
 	\item View the code generation report.
 \end{enumerate}
+\section{Software-in-the-loop Simulation (SIL)}
+A software-in-the-loop (SIL) simulation compiles generated source code and executes the code as a separate process on a target host computer. By comparing normal and SIL simulation results, it is possible to test the numerical equivalence of the model and the generated code.
+Thanks to the \textbf{Embedded Coder Toolbox} there are different ways to perform a SIL simualtion. \\
+Throught a communication channel, Simulink sends stimulus signals to the code on the computer or target process for each sample interval of the simulation:
+
+\begin{itemize}
+	\item Top-model (SIL simulation generates the stanalone code interface) and Model block. For both, the Test behavior of generated source code on development computer. Execution is host/host and nonreal time.
+	
+	\item SIL or PIL block (block uses standalone code interface). In this case the Simulation runs compiled object code through S-function. S-function communicates with object code executing as standalone application on development computer. Execution is host/host and nonreal time.
+\end{itemize}
+
+
+The method used in this report is the creation of a SIL block. \\
+In the model setting it is needs to use the Embedded Coder in the Code Generation section (ert.tlc).\\
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.7]{ert.jpg}
+	\caption{Target selection}
+\end{figure} \FloatBarrier
+
+Then it is possible to check the hardware implementation and check the host architeture on which automatically generated code for the controller will running. \\
+The follow step is to check a specific flag in the Code Generation section, in particular in the Verification in which it is possible to select the creating block. 
+After that, clicking on the unit, in the C/C++ Code, clicking $Build$ creates the SIL version of the Controller subsystem block. \\
+After the creation of the SIL block, a comparison simulation has been carried out. The entire plant has been simulated and then it is possible to observe the error between the two different simulations. \\
+
+The following steps summarize the creation of a SIL block:
+\begin{enumerate}
+	\item From the Configuration Parameters $\to$  Code Generation $\to$  Verification $\to$  Advanced Paramters $\to$  Create block drop-down list, select the SIL block.
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[scale=0.4]{verification.jpg}
+		\caption{Creation of the SIL block}
+	\end{figure} \FloatBarrier
+	\item Click OK.
+	\item In the model window, right-click the subsystem that it is need to simulate.
+	\item Select C/C++ Code $\to$  Build This Subsystem.
+	\item Click Build, which starts the subsystem build process that creates the SIL block for the generated subsystem code.
+	\item Add the generated block to the environment.
+	\item Run the simulation with the environment.
+\end{enumerate}
+
+The simulation results are represented in the following figure:
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.4]{sil_plot.jpg}
+	\caption{Difference in longitudinal speed of the original Simulink model and the SIL model}
+\end{figure} \FloatBarrier
+
+It is possible to see that the difference between the two simulations is negligible, so the whole result is acceptable.
 \section{PIL}
 
 
