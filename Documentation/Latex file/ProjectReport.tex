@@ -284,6 +284,44 @@ All these units cooperate in the same controller module, so an integration test 
 According to the previous affirmations we decided to let the integration test coincide with the MIL test, in order to test the behaviour of the whole controller.
 
 \section{MIL}
+MIL is a type of testing that can be done at the very fist stage of the development process.\\
+It is perform before any software generation code and it does not require any dedicated hardware. For all of these reasons, it is very useful because allow the developers to test their model at the very beginning of the whole process and so, if something fails, time and cost are significantly reduced. \\
+In validating the model, the first step that we have to perform is to create the plant of the system (we decided to built it on Simulink). Then, after building the controller, we have to verify that “the controller is able to control the plant” fulfilling all the requirements that were previously discussed. If this happened, the model is verified and we can continue with the next step that will be the SIL.\\
+In our case, MIL simulation has the aim to verify the adaptive cruise control. \\
+The controller that we implement depends of the speed of the first vehicle and the distance that must be respected between two consecutive vehicles is regulated by the Highway code:\\
+FORMULA\\
+We decided to test the behaviour of the whole system plotting the speed of the first vehicle and the following one. Our high level requirement was that the following vehicle runs accordingly the Highway code, this implies the respect of the safety distance. \\
+Since, as mentioned before, the controller take also the SoC value, we decided to plot three different situations depending on the State of Charge of the battery. By doing that, three different responses are shown:\\
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.2]{10_soc.jpeg}
+	\caption{Speed of the vehicle for 10 SoC}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.2]{50_soc.jpeg}
+	\caption{Speed of the vehicle for 50 SoC}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.2]{100_soc.jpeg}
+	\caption{Speed of the vehicle for 100 SoC}
+\end{figure}
+
+As can be seen from the graphs, we implemented our model in order to fulfil all the requirements previously defined: the speed limit imposed by the driver (50 Km/h in this case) is not overcame.\\
+In addition, we focused on a particular time interval to show how the SoC value influences the controller response.\\
+
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.2]{compareSoC.jpeg}
+	\caption{Comparison of the speed with different SoC}
+\end{figure}
+
+As can be seen from the graphs, where the SoC is higher, the controller can be more aggressive since it can drains more battery. On the other hand, when the SoC is at its minimum, the controller has a smoother and slower response to preserve the battery charge extending its life.
+
 
 \section{Automatic code generation}
 \textbf{Embedded Coder} is on of the tools uses for the automatic generation of code. It is a feature really used by the developers and engineers that automatically generates their code without writing thousands of lines and improve the quality and avoid the errors introduced manually. 
