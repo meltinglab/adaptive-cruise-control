@@ -40,21 +40,21 @@ This report is divided in to the following sections:
 
 \chapter{Project organization}
 \section{Hardware and software components}
-All the hardware and software components used to realize the prrject are listed here:
+Hardware and software components used to realize the project are listed below:
 \subsection{Hardware}
-The hardware used for this project is rather simple: PC running Windows and a Raspberry Pi 4 Model B.\\
-The Raspberry has been used as core component of the processor in-the-loop simulation.
+The hardware used for this project is a PC running Windows and a Raspberry Pi 4 Model B.\\
+The Raspberry has been used as the core component of the Processor-in-the-loop simulation.
 \subsection{Software}
-Software employed for this project is Simulink: Embedded Coder package, Simscape package, Powertrain Blockset are required.
-Software employed to organize the work and the communication between team members:
+The software used for this project is Simulink: Embedded Coder package, Simscape package, Powertrain Blockset are required.
+The software employed to organize the work and the communication between team members:
 \begin{itemize}
-	\item GitHub
-	\item LaTeX: for the realization of the documentations
-	\item Microsoft Teams: for the meetings
-	\item Draw-io: for the graphs realization
+	\item GitHub: VCS;
+	\item LaTeX: for the realization of the documentation;
+	\item Microsoft Teams: for the meetings;
+	\item Draw-io: for the graphs realization.
 \end{itemize}
-\section{Model based design}
-The realization of the project is based on the V-model, which is one of the most used approaches in the model-based design. The V-Model demonstartes the relationships between each phase of the development lif cycle and its associated phase od testing.  The horizontal and vertical axes represents time or project completeness (left-to-right) and level of abstraction, respectively. \\
+\section{Model-based design}
+The realization of the project is based on the V-model, which is one of the most used approaches for the model-based design. The V-Model highlights the relationships between each phase of the development life cycle and its associated phase of testing.  The horizontal and vertical axes represent time or project completeness (left-to-right) and level of abstraction, respectively. \\
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale=0.6]{v-model.png}
@@ -63,20 +63,19 @@ The realization of the project is based on the V-model, which is one of the most
 \FloatBarrier
 The project definition phases are:
 \begin{itemize}
-	\item \textbf{Requirement}: evaluation of the model requirements, planned how to proceed with the following steps and fixed the final goals.
-	\item \textbf{System definition}: define the high-level design for the model.
-	\item \textbf{Plant simulation}: it is realized the simulation of the plant using Simulink.
-	\item \textbf{Automatic code generation}: using Embedded Coder to generale the low-level code for the controller.
-	\item \textbf{PIL}: the code generated was deployed to hardware, and the processo in-the-loop has been performed.
-	\item \textbf{HIL}: here, the plant should be simulated in HIL module. This step, due to the available instrumentaions, it could not be implemented.
-	\item \textbf{Acceptance}: the real plant is realized, integration tests are performed. Again, no possibility to perform this step.
+	\item \textbf{Requirements}: evaluation of the model requirements, planning how to proceed with the following steps and fixing the final goals;
+	\item \textbf{System definition}: defining the high-level design for the model;
+	\item \textbf{Plant simulation}: realization the simulation of the plant using Simulink;
+	\item \textbf{Automatic code generation}: using Embedded Coder, the low-level code for the controller is generated;
+	\item \textbf{PIL}: deploying he generated code to the hardware, performing the processor-in-the-loop simulation;
+	\item \textbf{HIL}: the plant should be simulated in the HIL module. This step could not be implemented;
+	\item \textbf{Acceptance}: the real plant is realized, integration tests are performed. This step could not be implemented.
 \end{itemize}
 \FloatBarrier
-\section{Team organization}
 
 
 \chapter{Model explanation \& design}
-As anticipated before, the aim of this project is to design an Adaptive Cruise Control: to design it following the MBD, we of course need a plant that models the vehicle longitudinal dynamics.
+As anticipated before, the this project aims to design an Adaptive Cruise Control: to design it following the MBD, we of course need a plant that models the vehicle longitudinal dynamics.
 In Fig \ref{Plant} it is possible to see the whole plant model.
 
 \begin{figure}[htbp]
@@ -99,17 +98,17 @@ Going deeper, it is possible to see that it consists of three main blocks:
 	
 \end{itemize}
 
-Let us start the description from this last block.
+The description starts from this last block.
 
 \section{Mapped motor}
 
-This first block is used to implement a mapped motor and drive electronics operating in torque control mode: the output torque tracks a reference demand one, directly coming from the output of the PID controller. This torque will be one of the possible input of the next block, the Transmission Dynamics one. Particularly, from the output of the PID controller we could have a positive torque if the vehicle needs to accelerate, or a negative torque if the car needs to brake: the first one will be above mentioned input of the Mapped Motor block, the latter one will be directly applied to the brake system in the Transmission Dynamics block.
+This first block is used to implement a mapped motor and drive electronics operating in torque control mode: the output torque tracks a reference demand one, directly coming from the output of the PID controller. This torque will be one of the possible input of the next block, the Transmission Dynamics one. Particularly, from the output of the PID controller we could have a positive torque if the vehicle needs to accelerate, or a negative torque if the car needs to brake: the first one is the above mentioned input of the Mapped Motor block, the latter one will be directly applied to the brake system in the Transmission Dynamics block.
 
 \section{Transmission Dynamics}
 
 
 
-Thanks to this block it is possible to model the entire driveline, from the ECU torque request to the wheels motion.
+Thanks to this block it is possible to model the entire driveline, from the ECU torque request to the motion of the wheels.
  
  \begin{figure}[htbp]
  	\centering
@@ -126,12 +125,12 @@ As anticipated before, this block has two inputs:
 	
 \end{itemize}
 
-In the first case, the torque is modified by a gear ratio block which models the one-speed transmission of the electric vehicle. Conversely, when a negative torque is asked, the brake block provides a negative torque directly at the wheel input. Then, the Simscape wheels blocks model the behaviour of the wheels in terms of inertia, rolling resistance and slip, giving us an angular speed of the wheel that is proportional to the torque given as input.
+In the first case, the torque is modified by a gear ratio block which models the one-speed transmission of the electric vehicle. Conversely, when a negative torque is requested, the brake block provides a negative torque directly at the wheel input. Then, the Simscape wheels blocks model the behaviour of the wheels in terms of inertia, rolling resistance and slip, providing an angular speed of the wheel proportional to the torque given as input.
 
 \section{Vehicle longitudinal dynamics}
 
 
-Finally, to model the longitudinal dynamics of the vehicle, from the Simscape Driveline library the “vehicle longitudinal dynamics” block was picked.
+Finally, to model the longitudinal dynamics of the vehicle, from the Simscape Driveline library the “vehicle longitudinal dynamics” block has been picked.
 
 
 \begin{figure}[htbp]
@@ -140,8 +139,8 @@ Finally, to model the longitudinal dynamics of the vehicle, from the Simscape Dr
 	\caption{Vehicle longitudinal dynamics block}
 \end{figure}
 
-This block represents a two-axle vehicle body in longitudinal motion: it accounts for body mass, aerodynamic drag, road incline, headwind speed (in our simulations they are not considered influencing quantities)and weight distribution between axles due to acceleration and road profile. The block accepts as input the resulting traction motion developed by tires (that is to say, the output of the Simscape wheels blocks), giving as output the vehicle velocity and also the front normal wheel forces.\\
-Finally, from this block is also emulated the radar function, that is to say the monitoring of the distance between this vehicle and the first one: in fact, thanks to the presence of an integrator block, from the actual speed of the vehicle its position is computed. Then this position is fed back and subtracted to the position of the first vehicle, giving us the resulting radar distance.
+This block represents a two-axle vehicle body in longitudinal motion: it accounts for body mass, aerodynamic drag, road incline, headwind speed (in these simulations they are not considered influencing quantities)and weight distribution between axles due to acceleration and road profile. This block accepts as input the resulting traction motion developed by tires (that is to say, the output of the Simscape wheels blocks), giving as output the vehicle velocity and also the front normal wheel forces.\\
+Finally, from this block is also emulated the radar function, that is to say the monitoring of the distance between this vehicle and the leading one: in fact, thanks to the presence of an integrator block, from the actual speed of the vehicle its position is computed. Then this position is fed back and subtracted to the position of the leading vehicle, resulting in radar distance.
 
 \begin{figure}[htbp]
 	\centering
@@ -156,7 +155,7 @@ Finally, from this block is also emulated the radar function, that is to say the
 \section{Requirements}
 \subsection{Software requirements}
 
-In order to be able to interact with the developed model, some software tools are needed:
+In order to be able to interact with the developed model, the following software tools are needed:
 
 \begin{itemize}
 	
@@ -170,9 +169,9 @@ In order to be able to interact with the developed model, some software tools ar
 	
 \end{itemize}
 
-\subsection{High level requirements}
+\subsection{High-level requirements}
 
-The goal of the overall control system is to extend the mission of the simpler Cruise Control: regulate the speed to the desired one and keep it. In addition respect this goal, the Adaptive Cruise Control adapts the speed of the vehicle respect the velocity of the following one, being able to correctly mantain the safety distance dictated by the Highway Code when it needed (that is to say, when the current distance between the vehicles is lower than the required safety distance):
+The goal of the overall control system is to extend the mission of the simpler Cruise Control: regulate the speed to the desired one and keep it. Additionally, the Adaptive Cruise Control adapts the speed of the vehicle with respect to the velocity of the following one, being able to correctly maintain the safety distance dictated by the Highway Code when needed (i.e. when the current distance between the vehicles is lower than the required safety distance):
 
 \begin{equation*}
 	d_s=d_{min}+\dfrac{1}{k}v^2
@@ -184,7 +183,7 @@ The goal of the overall control system is to extend the mission of the simpler C
 	\caption{ACC}
 \end{figure}
 
-\subsection{Low level requirements}
+\subsection{Low-level requirements}
 The designed system is intended to work on an electric vehicle, considering also the state of charge of the battery: particularly, the overall behaviour of the control action will be more or less aggressive depending on the state of charge level.
 
 \begin{figure}[htbp]
@@ -193,21 +192,21 @@ The designed system is intended to work on an electric vehicle, considering also
 	\caption{Front radar}
 \end{figure}
 
-Thanks to the presence of a sensor (typically a radar installed in the front of the car), the distance respect the following vehicle is continuosly monitored: when this distance falls below the threshold dictated by the Highway Code minus a safety margin quantity (one meter as dictated by requirement, to be sure to be able to brake in the correct timings), the control must act on the brakes. Then, during the acceleration phase, the system needs to be designed as following: when the first vehicle accelerates, the control must operate so that the vehicle speed becomes the one desired if it is possible,  that is to say if the two vehicles are far enough. Otherwise, the system must adequate the vehicle speed to the one needed to keep the safety distance.
+Thanks to the presence of a sensor (typically a radar installed in the front of the car), the distance with respect to the following vehicle is continuously monitored: when this distance falls below the threshold dictated by the Highway Code minus a safety margin quantity (one meter as dictated by requirement, to be sure to be able to brake in the correct timing), the control must act on the brakes. Then, during the acceleration phase, the system needs to be designed as following: when the first vehicle accelerates, the control must operate so that the vehicle speed becomes the one desired if it is possible,  that is to say if the two vehicles are far enough. Otherwise, the system must adequate the vehicle speed to the one needed to keep the safety distance.
 
 
 
 
-\section{Unity \& Integration testing}
+\section{Unit \& Integration testing}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.34]{Controller_overview.jpg}
 	\caption{An overview of the controller block}
 	\label{Controller_overview}
 \end{figure}
-Our controller is composed by 4 main blocks: switch\_subsys, SoC handler, torque\_split and the PID regulator.
+The controller is composed of 4 main blocks: Switch\_Subsystem, SoC handler, Torque\_split\_subsystem and the PID regulator.
 While it is impossible to test the PID behaviour without a model to be controlled, it is necessary to test separately the other blocks.
-We tested the units using the tool Simulink Test. We first built an harness for each unity to isolate it from the rest of the model, then we built the input signals in such a way to stimulate the unity in all possible conditions. We also built the baseline signals to tell the tester what output we expected when feeding the unity a given input. 
+The units have been tested using the Simulink Test tool. Initially a harness has been built for each unit to isolate it from the rest of the model, then the input signals have been designed in such a way to stimulate the units under all possible conditions. Various baseline signals have been designed in order to tell the tester which output is expected when feeding the unit with a given input. 
 \newpage
 \subsection{Switch subsystem}
 \begin{figure}[!h]
@@ -217,16 +216,16 @@ We tested the units using the tool Simulink Test. We first built an harness for 
 	\label{switch_subs}
 \end{figure}
 \FloatBarrier
-This system is composed of a switch commanded by a majority operator fed with the same signals that have to be switched. We wanted to be shure that this small unity would behave as expected. 
-In Fig \ref{IO_baseline_switch_detach} we can see the inputs that we used to test the unit: we wanted to test all the possible conditions for the ‘grater than’ block. To better visualize which signal was let go by the switch we tried to differentiate as much as possible the two inputs.
+This system is composed of a switch commanded by a majority operator fed with the same signals that have to be switched. 
+In Fig \ref{IO_baseline_switch_detach} the inputs used to test the unit are shown that. The two inputs were differentiated as much as possible in order to better understand which of the signals has been chosen
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.4]{IO_baseline_switch_detach.eps}
-	\caption{Inputs of the test: acceptable speed is the one set by the user, target speed is the one of the care ahead}
+	\caption{Inputs of the test: acceptable speed is the one set by the user, the target speed is the one of the car ahead}
 	\label{IO_baseline_switch_detach}
 \end{figure}
-As we can see Fig. \ref{switch_baseline} (right) the Simulink test tool is able to generate a document reporting the configuration of the test, to guarantee to the customer (we can call costumer whoever will need to use our subsystem and will need it being tested) that the test was performed accordingly to his needs. This feature also gives the opportunity to an external part to perform the exact same test and verify that the results are coherent.
-In the same way the tool can generate a report regarding the output of the test, here in Fig. \ref{switch_baseline} (left) we can see that the test produces successful results, in fact the output of the test coincides precisely with our baseline signal. 
+As shown in Fig. \ref{switch_baseline} (right), the Simulink test tool is able to generate a document reporting the configuration of the test, to guarantee to the customer that the test was performed accordingly to his needs. This feature also gives the opportunity to an external part to perform the same test and verify that the results are coherent.
+In the same way the tool can generate a report regarding the output of the test, in Fig. \ref{switch_baseline} (left) is shown that the test produces successful results, in fact the output of the test coincides perfectly with the baseline signal. 
  %PUT BOTH THE FIGURES IN ONE FIGURE SIDE BY SIDE
 \begin{figure}[!h]
 	\centering
@@ -243,8 +242,8 @@ In the same way the tool can generate a report regarding the output of the test,
 	\caption{An overview of the torque split subsystem}
 	\label{split_subs}
 \end{figure}
-This unit’s goal is to split the signal coming from the PID, asking for torque. The PID asks for a negative or positive torque, we have to be able to translate the negative torque in a signal to be sent to the brake module. This unit’s goal is to divide the torque signal into two signals depending on the sign of the PID output. To test this unit we just had to verify that when given a positive input it was transferred to output assigned to the engine and when given a negative input it was transferred to the brake output. At the same time the output assigned to the opposite sign has to be zero.
-In Fig. \ref{input_split_test} you can see how the test input was designed and you can see that the output corresponds exactly to the baseline signal, meaning a successful test.
+This unit’s goal is to split the signal coming from the PID, asking for torque. The PID asks for a negative or positive torque, the system has to be able to translate the negative torque in a signal to be sent to the brake module. To test this unit the following steps have to be performed: when a positive input is given this is transferred to the engine while when a negative input is given it is transferred to the brake output. At the same time the output assigned to the opposite sign has to be zero.
+In Fig. \ref{input_split_test} is possible to see how the test input was designed and also that the output corresponds exactly to the baseline signal, meaning a successful test.
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.4]{input_split_test}\hfill
@@ -261,8 +260,8 @@ In Fig. \ref{input_split_test} you can see how the test input was designed and y
 	\label{SoC_handle_subs}
 \end{figure}
 \FloatBarrier
-This unit is a FSM, so a slightly more complicated test is due. The goal of this unit is to manage the aggressiveness of the control depending on the SoC of the vehicle’s battery pack. We want a less aggressive control if the car has less autonomy left. We divided the interval of possible SoC values in three segments: minimum, medium, maximum. Each segment corresponds to a different state. We have three states, since from each state you can go to the other two we have in total 6 transitions.  We have only one input: SoC signal. In the input signal, wich you can see in Fig.\ref{SoC_handle_input}, we changed the signal in order to stimulate all the possible transitions. 
-To be more robust against unexpected behaviour we wanted an additional output for the FSM. The SoC signal is expected to never trespass the 0\% and 100\% bounds, so we created a signal “OutOfRange” that rises when this condition is verified. The FSM is designed to check constantly the OTR signal while performing the ordinary tasks, so a parallel state is created in the FSM.
+This unit is a FSM, so a slightly more complicated test has to be performed. The goal of this unit is to manage the aggressiveness of the control depending on the SoC of the vehicle’s battery pack: a less aggressive control when the car has less autonomy left. The interval of possible SoC values has been devided in three segments: minimum, medium and maximum. Each segment corresponds to a different state. There are three states, since from each state you can go to the other two there are in total 6 transitions.  There is only one input: SoC signal. The input signal, shown in Fig.\ref{SoC_handle_input}, is designed in order to stimulate all the possible transitions. 
+To be more robust against unexpected behaviour an additional output has been added for the FSM. The SoC signal is expected to never trespass the 0\% and 100\% boundaries, so a signal “OutOfRange(OTR)” that rises when this condition is verified was created. The FSM is designed to check constantly the OTR signal while performing the ordinary tasks, so a parallel state is created in the FSM.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[scale=0.34]{SoC_handle_input.eps}
@@ -276,24 +275,24 @@ To be more robust against unexpected behaviour we wanted an additional output fo
 	\caption{OTR output vs baseline (up) PID::P output vs baseline (down)}
 	\label{OTR_baseline_result}
 \end{figure}
-We also tested the behaviour of this signal. In Fig.\ref{SoC_handle_input} you can deduce from the input signal (second half of the signal) that we wanted to test that regardless the state in wich we were and the previous value of the SoC signal, the OTR signal would raise when expected to.
-In Fig.\ref{OTR_baseline_result} you can see that the output signal matches the baseline, meaning a successful test.
+The behaviour of this signal has been tested too. In Fig.\ref{SoC_handle_input}can be deduced from the input signal (second half of the signal) that regardless the current state and the previous value of the SoC signal, the OTR signal raises when expected to.
+In Fig.\ref{OTR_baseline_result} can be seen that the output signal matches the baseline, meaning a successful test.
 \FloatBarrier
 \subsection{Integration test}
-All these units cooperate in the same controller module, so an integration test would be necessary. In our specific case these three units do not have in common any input or output, meaning that there is no possible integration test to be performed. All these units are meant to condition the PID behaviour, so in order to perform an integration test the PID would have to be involved. Since we assume the PID block itself already test by MATLAB there is no point in testing the PID behaviour when not regulating a plant model.
+All these units cooperate in the same controller module, so an integration test would be necessary. In this specific case these three units do not have in common any input or output, meaning that there is no possible integration test to be performed. All these units are meant to condition the PID behaviour, so in order to perform an integration test the PID would have to be involved. Since the PID block itself is assumed to be tested by MATLAB there is no point in testing the PID behaviour when not regulating a plant model.
 According to the previous affirmations we decided to let the integration test coincide with the MIL test, in order to test the behaviour of the whole controller.
 
-\section{MIL}
-MIL is a type of testing that can be done at the very fist stage of the development process.\\
-It is perform before any software generation code and it does not require any dedicated hardware. For all of these reasons, it is very useful because allow the developers to test their model at the very beginning of the whole process and so, if something fails, time and cost are significantly reduced. \\
-In validating the model, the first step that we have to perform is to create the plant of the system (we decided to built it on Simulink). Then, after building the controller, we have to verify that “the controller is able to control the plant” fulfilling all the requirements that were previously discussed. If this happened, the model is verified and we can continue with the next step that will be the SIL.\\
-In our case, MIL simulation has the aim to verify the adaptive cruise control. \\
-The controller that we implement depends of the speed of the first vehicle and the distance that must be respected between two consecutive vehicles is regulated by the Highway code:\\
+\section{Model-in-the-loop(MIL)}
+MIL is a type of testing that can be done at the very first stage of the development process.\\
+It is performed before any software generation code and it does not require any dedicated hardware. For all of these reasons, it is very useful because it allows the developers to test their model at the very beginning of the whole process. So, if something fails, time and cost are significantly reduced. \\
+When validating the model, the first step to be performed is to create the plant of the system. Then, after the design of the controller, the next step is to verify that “the controller is able to control the plant” fulfilling all the requirements that were previously discussed. If this happened, the model is verified and it is possible to continue with the next step (SIL).\\
+In this case, MIL simulation has the aim to verify the Adaptive Cruise Control. \\
+The implemented control law  depends on the speed of the leading vehicle and the distance that must be respected between two consecutive vehicles according to the Highway code:\\
 \begin{equation*}
 	d_s=d_{min}+\dfrac{1}{k}v^2
 \end{equation*}
-We decided to test the behaviour of the whole system plotting the speed of the first vehicle and the following one. Our high level requirement was that the following vehicle runs accordingly the Highway code, this implies the respect of the safety distance. \\
-Since, as mentioned before, the controller take also the SoC value, we decided to plot three different situations depending on the State of Charge of the battery. By doing that, three different responses are shown:\\
+The behaviour of the whole system has been tested by plotting the speed of the first vehicle and the following one.\\
+Since, as mentioned before, the controller takes into account also the SoC value, three different situations depending on the State of Charge of the battery have been plotted. As a result, three different responses are shown:\\
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale=0.2]{10_soc.jpeg}
@@ -312,8 +311,8 @@ Since, as mentioned before, the controller take also the SoC value, we decided t
 	\caption{Speed of the vehicle for 100 SoC}
 \end{figure}
 
-As can be seen from the graphs, we implemented our model in order to fulfil all the requirements previously defined: the speed limit imposed by the driver (50 Km/h in this case) is not overcame.\\
-In addition, we focused on a particular time interval to show how the SoC value influences the controller response.\\
+As can be seen from the graphs, the model in order to fulfils all the requirements previously defined: the speed limit imposed by the driver (50 Km/h in this case) is not overcame.\\
+In addition, a particular time interval has been considered to show how the SoC value influences the controller response.\\
 
 
 \begin{figure}[htbp]
@@ -322,40 +321,40 @@ In addition, we focused on a particular time interval to show how the SoC value 
 	\caption{Comparison of the speed with different SoC}
 \end{figure}
 
-As can be seen from the graphs, where the SoC is higher, the controller can be more aggressive since it can drains more battery. On the other hand, when the SoC is at its minimum, the controller has a smoother and slower response to preserve the battery charge extending its life.
+As can be seen from the graphs, where the SoC is higher, the controller can be more aggressive since it can drain more battery. On the other hand, when the SoC is at its minimum, the controller has a smoother and slower response to preserve the battery charge extending its life.
 
 
 \section{Automatic code generation}
-\textbf{Embedded Coder} is on of the tools uses for the automatic generation of code. It is a feature really used by the developers and engineers that automatically generates their code without writing thousands of lines and improve the quality and avoid the errors introduced manually. 
-Embedded Coder generate readable, compact and fast C and C++ code for embedded processors. \\
+\textbf{Embedded Coder} is one of the tools used for the automatic generation of code. It is a feature widely used by developers and engineers that automatically generate their code: improves the quality and avoids the errors introduced manually. 
+Embedded Coder generates readable, compact and fast C and C++ code for embedded processors. \\
 The generated code is ISO C compliant, so it can run on virtually any fixed- or floating-point device and is well suited for applications that need to minimize memory usage or maximize speed. \\
 Embedded coder allows to review and navigate from model to generated code and back using code reports with traceability links. It is also possible to verify that the code execution matches model simulation results using software-in-the-loop and processor-in-the-loop testing. SIL and PIL tests can also include code coverage analysis and execution profiling. \\
-Embedded Coder offers built-in support for AUTOSAR, MISRA C®, and ASAP2 software standards. In addition, it offers support packages with advance optimization and device drivers for specific hardware.
+Embedded Coder offers built-in support for AUTOSAR, MISRA C®, and ASAP2 software standards. In addition, it offers support packages with advanced optimization and device drivers for specific hardware.
 Matlab and Simulink offer the \textbf{Embedded Coder} to generate C/C++ code from Matlab and Simulink model or subsystem. \\
-To generate the code it is possible to estabilish the objectivies using the Code Generation Advisor in order to check that the controller is MISRA C compliant.\\
+To generate the code it is possible to establish the objectives using the Code Generation Advisor in order to check that the controller is MISRA C compliant.\\
 
-\subsection{Prepare a Model for Code Generarion}
+\subsection{Preparation of a Model for Code Generarion}
 At first it is needed to prepare a Model for Code Generation:
 \begin{enumerate}
-	\item Open the \textbf{C Code} tab, click \textbf{Settings} to open the Configuration Parameter dialog blox (or use the shortcut \textbf{Ctrl+E}).\\
+	\item Open the \textbf{C Code} tab, click \textbf{Settings} to open the Configuration Parameter dialogue box (or use the shortcut \textbf{Ctrl+E}).\\
 	Then select \textbf{Simulation $\to$ Model Configuration parameters}
 	\item Open the \textbf{Solver} pane and select:
 	\begin{itemize}
 		\item \textbf{Solver type}: Fixed-Step.
 		\item  \textbf{Solver}: discrete.
 	\end{itemize}
-	\item Open the \textbf{Optimization} pane, and set Default parameter behavior to Inlined.
+	\item Open the \textbf{Optimization} pane, and set Default parameter behaviour to Inlined.
 	\item Open the \textbf{Code Generation} pane, and specify ert.tlc as the System Target File.
 	\item Clear \textbf{Generate makefile}.
 	\item Select \textbf{Generate code only}.
 	\item Enable the HTML report generation by opening the \textbf{Code Generation $\to$ Report} pane and selecting Create code generation report and Open report automatically. Click the horizontal ellipsis and, under Advanced parameters, select \textbf{Code-to-model}. Enabling the HTML report generation is optional.
 	\item Click Apply and then OK to exit.
 \end{enumerate}
-\subsection{Generate Code using Ebedded Coder}
+\subsection{Generate Code using Embedded Coder}
 The steps that must be followed are:
 \begin{enumerate}
 	\item Open the model that contains the block. 
-	\item In the Code Generation Advisor, click Set Objectivies. Is an important step in which it is possible to check the coding standard compliance. There are different objectivies that can be selected and it is possible to select and prioritize the combination of objectivie before generating the code.
+	\item In the Code Generation Advisor, click Set Objectives. This is an important step in which it is possible to check the coding standard compliance. There are different objectives that can be selected and it is possible to select and prioritize the combination of objective before the code generation.
 	\item On the C Code tab, click Quick Start.
 	\item In the Generate Code step, apply the proposed changes and generate code by clicking Next.
 	\item Click Finish, then return to the C Code tab. From this it is possible to configure code generation customizations, and then check the results in the Code view next to the model.
@@ -364,26 +363,26 @@ The steps that must be followed are:
 \end{enumerate}
 \section{Software-in-the-loop Simulation (SIL)}
 A software-in-the-loop (SIL) simulation compiles generated source code and executes the code as a separate process on a target host computer. By comparing normal and SIL simulation results, it is possible to test the numerical equivalence of the model and the generated code.
-Thanks to the \textbf{Embedded Coder Toolbox} there are different ways to perform a SIL simualtion. \\
-Throught a communication channel, Simulink sends stimulus signals to the code on the computer or target process for each sample interval of the simulation:
+Thanks to the \textbf{Embedded Coder Toolbox} there are different ways to perform a SIL simulation. \\
+Through a communication channel, Simulink sends stimulus signals to the code on the computer or target process for each sample interval of the simulation:
 
 \begin{itemize}
-	\item Top-model (SIL simulation generates the stanalone code interface) and Model block. For both, the Test behavior of generated source code on development computer. Execution is host/host and nonreal time.
+	\item Top-model (SIL simulation generates the stand-alone code interface) and Model block. For both, the Test behaviour of generated source code on the development computer. Execution is host/host and non-real time.
 	
-	\item SIL or PIL block (block uses standalone code interface). In this case the Simulation runs compiled object code through S-function. S-function communicates with object code executing as standalone application on development computer. Execution is host/host and nonreal time.
+	\item SIL or PIL block (block uses stand-alone code interface). In this case the Simulation runs compiled object code through S-function. S-function communicates with object code executing as stand-alone application on the development computer. Execution is host/host and non-real time.
 \end{itemize}
 
 
 The method used in this report is the creation of a SIL block. \\
-In the model setting it is needs to use the Embedded Coder in the Code Generation section (ert.tlc).\\
+In the model setting it is needed to use the Embedded Coder in the Code Generation section (ert.tlc).\\
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale=0.7]{ert.jpg}
 	\caption{Target selection}
 \end{figure} \FloatBarrier
 
-Then it is possible to check the hardware implementation and check the host architeture on which automatically generated code for the controller will running. \\
-The follow step is to check a specific flag in the Code Generation section, in particular in the Verification in which it is possible to select the creating block. 
+Then it is possible to check the hardware implementation and check the host architecture on which automatically generated code for the controller will run. \\
+The following step is to check a specific flag in the Code Generation section, in particular in the Verification in which it is possible to select the created block. 
 After that, clicking on the unit, in the C/C++ Code, clicking $Build$ creates the SIL version of the Controller subsystem block. \\
 After the creation of the SIL block, a comparison simulation has been carried out. The entire plant has been simulated and then it is possible to observe the error between the two different simulations. \\
 
@@ -411,9 +410,9 @@ The simulation results are represented in the following figure:
 \end{figure} \FloatBarrier
 
 It is possible to see that the difference between the two simulations is negligible, so the whole result is acceptable.
-\section{Processor in-the-loop Simulation (PIL)}
+\section{Processor-in-the-loop Simulation (PIL)}
 
-The chosen hardware for the simulation is the Raspberry Pi 4 model B, equipped with quad-core processor (ARM-cortex), is wireless connected to PC.
+The chosen hardware for the simulation is the Raspberry Pi 4 model B, equipped with quad-core processor (ARM-cortex), wirelessly connected to the PC.
 To provide a stable connection between hardware and Simulink it is necessary to set properly the device address (IP address) and the credential of the OS system for privileged read/write operation.
 
 
@@ -430,21 +429,21 @@ The generation of the code is widely described above on the SIL section and the 
 	\includegraphics[scale=0.7]{PIL_block.png}
 	\caption{PIL block}
 \end{figure} \FloatBarrier
-Once the controller is replaced by PIL block, the entire code is deployed on Raspberry board and the simulation starts. 
+Once the controller has been replaced by PIL block, the entire code is deployed on Raspberry board and the simulation starts. 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale=0.7]{PIL_sim.png}
 	\caption{Simulation PIL block}
 \end{figure} \FloatBarrier
-From the comparison simulation can be noticed the difference between the longitudinal speed of original Simulink model and the one of PIL model.
+From the comparison simulation, it can be noticed the difference between the longitudinal speed of original Simulink model and the one of PIL model.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale=1]{plot_PIL.png}
-	\caption{Difference in longitudinal speed of the original Simulink model and the PIL model}
+	\caption{Difference in the longitudinal speed of the original Simulink model and the PIL model}
 \end{figure} \FloatBarrier
 
 The overall result is acceptable.
-The difference between the two simulation is negligible and bounded in a very short range.
+The difference between the two simulations is negligible and bounded in a very short range.
 
 \chapter{Conclusion}
 	
