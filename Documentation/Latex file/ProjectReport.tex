@@ -289,7 +289,9 @@ It is perform before any software generation code and it does not require any de
 In validating the model, the first step that we have to perform is to create the plant of the system (we decided to built it on Simulink). Then, after building the controller, we have to verify that “the controller is able to control the plant” fulfilling all the requirements that were previously discussed. If this happened, the model is verified and we can continue with the next step that will be the SIL.\\
 In our case, MIL simulation has the aim to verify the adaptive cruise control. \\
 The controller that we implement depends of the speed of the first vehicle and the distance that must be respected between two consecutive vehicles is regulated by the Highway code:\\
-FORMULA\\
+\begin{equation*}
+	d_s=d_{min}+\dfrac{1}{k}v^2
+\end{equation*}
 We decided to test the behaviour of the whole system plotting the speed of the first vehicle and the following one. Our high level requirement was that the following vehicle runs accordingly the Highway code, this implies the respect of the safety distance. \\
 Since, as mentioned before, the controller take also the SoC value, we decided to plot three different situations depending on the State of Charge of the battery. By doing that, three different responses are shown:\\
 \begin{figure}[htbp]
