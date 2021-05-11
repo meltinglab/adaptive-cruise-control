@@ -204,7 +204,7 @@ Thanks to the presence of a sensor (typically a radar installed in the front of 
 	\caption{An overview of the controller block}
 	\label{Controller_overview}
 \end{figure}
-The controller is composed of 4 main blocks: Switch\_Subsystem, SoC handler, Torque\_split\_subsystem and the PID regulator.
+The controller is composed of 4 main blocks: Switch\_Subsystem, SoC handler,\\ Torque\_split\_subsystem and the PID regulator.
 While it is impossible to test the PID behaviour without a model to be controlled, it is necessary to test separately the other blocks.
 The units have been tested using the Simulink Test tool. Initially a harness has been built for each unit to isolate it from the rest of the model, then the input signals have been designed in such a way to stimulate the units under all possible conditions. Various baseline signals have been designed in order to tell the tester which output is expected when feeding the unit with a given input. 
 \newpage
@@ -282,7 +282,7 @@ In Fig.\ref{OTR_baseline_result} can be seen that the output signal matches the 
 All these units cooperate in the same controller module, so an integration test would be necessary. In this specific case these three units do not have in common any input or output, meaning that there is no possible integration test to be performed. All these units are meant to condition the PID behaviour, so in order to perform an integration test the PID would have to be involved. Since the PID block itself is assumed to be tested by MATLAB there is no point in testing the PID behaviour when not regulating a plant model.
 According to the previous affirmations we decided to let the integration test coincide with the MIL test, in order to test the behaviour of the whole controller.
 
-\section{Model-in-the-loop(MIL)}
+\section{Model-in-the-loop (MIL)}
 MIL is a type of testing that can be done at the very first stage of the development process.\\
 It is performed before any software generation code and it does not require any dedicated hardware. For all of these reasons, it is very useful because it allows the developers to test their model at the very beginning of the whole process. So, if something fails, time and cost are significantly reduced. \\
 When validating the model, the first step to be performed is to create the plant of the system. Then, after the design of the controller, the next step is to verify that “the controller is able to control the plant” fulfilling all the requirements that were previously discussed. If this happened, the model is verified and it is possible to continue with the next step (SIL).\\
@@ -307,13 +307,13 @@ Since, as mentioned before, the controller takes into account also the SoC value
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.2]{100_soc.jpeg}
+	\includegraphics[scale=0.28]{100_soc.jpeg}
 	\caption{Speed of the vehicle for 100 SoC}
 \end{figure}
-
+\FloatBarrier
 As can be seen from the graphs, the model in order to fulfils all the requirements previously defined: the speed limit imposed by the driver (50 Km/h in this case) is not overcame.\\
 In addition, a particular time interval has been considered to show how the SoC value influences the controller response.\\
-
+\FloatBarrier
 
 \begin{figure}[htbp]
 	\centering
@@ -446,6 +446,17 @@ The overall result is acceptable.
 The difference between the two simulations is negligible and bounded in a very short range.
 
 \chapter{Conclusion}
-	
+The designed controller is quite simple and cheap in terms of control design (a PID controller is the core of the control law). It can be easily integrated into a more complex structure thanks to the used modular approach. 
+Future improvements would consist of using the OTR signal for more complex control actions, like some checks or the disengagement of the whole system.
+The system can be integrated with other ADAS systems like an emergency brake system or a collision-avoidance system (alternatively a simpler overtake assist).
+The system can not be directly deployed into a passenger vehicle as it is. Its interface by the way is structured in order to be integrated in a more complex ECU software: in modern ECUs there are various systems able to request torque, these signals are handled by a high level controller that dispatches the most adequate torque signal coming from one of the various subsystems, accordingly to predefined policies. 
+The presented document illustrates how powerful the model-based design approach can be. Following the V-model tool, the designer is able to guarantee a rigorous step by step workflow.
+Thanks to the followed standardized workflow the output product could be sold to a final user that would have all the needed documentation to assess the correct behaviour of the system.
+
+
+
+
+
+
 	
 \end{document}
