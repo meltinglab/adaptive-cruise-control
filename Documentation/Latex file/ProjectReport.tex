@@ -26,16 +26,16 @@
 
 
 \chapter{Introduction}
-The reason for the choice of the Adaptive Cruise Control is because it is one of the most commonly used features of the ADAS. ADAS (Advance Driver Assistance Systems) are the electronic systems that assist drivers in driving and parking functions. ADAS increase car and road safety, using automated technology, such as sensors and cameras.\\ Nowdays, more and more vehicles are equipped with them, often as standard features. Adaptive cruise control is one of the most advanced technology, being able to facilitate the driving.\\
-The Adaptive Cruise Control (ACC) is an active safety system that automatically controls the acceleration and braking of a vehicle. It is activated through a button on the steering wheel and disengage by the driver’s braking and/or another button.
+The reason for the choice of the Adaptive Cruise Control is because it is one of the most commonly used features of the ADAS. ADAS (Advance Driver Assistance Systems) are the electronic systems that assist drivers in driving and parking functions. ADAS increase car and road safety, using automated technology, such as sensors and cameras.\\ Nowdays, more and more vehicles are equipped with them, often as standard features. Adaptive Cruise Control is one of the most advanced technology, being able to facilitate the driving.\\
+The Adaptive Cruise Control (ACC) is an active safety system that automatically controls the acceleration and braking of a vehicle. It is activated through a button on the steering wheel and disengaged by the driver’s braking and/or another button.
 This report offers an example which illustrates the benefits of using Model-Based Design in the engineering workflow.
 The goal is to show how this approach can be used in the entire development of the system design.\\
 This report is divided in to the following sections:
 \begin{itemize}
-	\item $Chapter$ $2$: The project organization is shown and the Model-Based Design is esplained;
+	\item $Chapter$ $2$: The project organization is shown and the Model-Based Design is explained;
 	\item $Chapter$ $3$: The Model explanation and the design of the Adaptive Cruise Control are illustrated;
-	\item $Chapter$ $4$: The different steps for the project development (Unity test,MIL, Automated Generated Code,SIL and PIL simultion are described;
-	\item $Chapter$ $5$: A conclusion with the future developments.
+	\item $Chapter$ $4$: The different steps for the project development (Unity test, MIL, Automated Generated Code, SIL and PIL simulations are described;
+	\item $Chapter$ $5$: A conclusion with the future developments is proposed.
 \end{itemize}
 
 \chapter{Project organization}
@@ -46,7 +46,7 @@ The hardware used for this project is a PC running Windows and a Raspberry Pi 4 
 The Raspberry has been used as the core component of the Processor-in-the-loop simulation.
 \subsection{Software}
 The software used for this project is Simulink: Embedded Coder package, Simscape package, Powertrain Blockset are required.
-The software employed to organize the work and the communication between team members:
+The software employed to organize the work and the communication between team members are listed below:
 \begin{itemize}
 	\item GitHub: VCS;
 	\item LaTeX: for the realization of the documentation;
@@ -67,7 +67,7 @@ The project definition phases are:
 	\item \textbf{System definition}: defining the high-level design for the model;
 	\item \textbf{Plant simulation}: realization the simulation of the plant using Simulink;
 	\item \textbf{Automatic code generation}: using Embedded Coder, the low-level code for the controller is generated;
-	\item \textbf{PIL}: deploying he generated code to the hardware, performing the processor-in-the-loop simulation;
+	\item \textbf{PIL}: deploying the generated code to the hardware, performing the processor-in-the-loop simulation;
 	\item \textbf{HIL}: the plant should be simulated in the HIL module. This step could not be implemented;
 	\item \textbf{Acceptance}: the real plant is realized, integration tests are performed. This step could not be implemented.
 \end{itemize}
@@ -75,7 +75,7 @@ The project definition phases are:
 
 
 \chapter{Model explanation \& design}
-As anticipated before, the this project aims to design an Adaptive Cruise Control: to design it following the MBD, we of course need a plant that models the vehicle longitudinal dynamics.
+As anticipated before, this project aims to design an Adaptive Cruise Control: to design it following the MBD, a plant that models the vehicle longitudinal dynamics is needed.
 In Fig \ref{Plant} it is possible to see the whole plant model.
 
 \begin{figure}[htbp]
@@ -139,7 +139,7 @@ Finally, to model the longitudinal dynamics of the vehicle, from the Simscape Dr
 	\caption{Vehicle longitudinal dynamics block}
 \end{figure}
 
-This block represents a two-axle vehicle body in longitudinal motion: it accounts for body mass, aerodynamic drag, road incline, headwind speed (in these simulations they are not considered influencing quantities)and weight distribution between axles due to acceleration and road profile. This block accepts as input the resulting traction motion developed by tires (that is to say, the output of the Simscape wheels blocks), giving as output the vehicle velocity and also the front normal wheel forces.\\
+This block represents a two-axle vehicle body in longitudinal motion: it accounts for body mass, aerodynamic drag, road incline, headwind speed (in these simulations they are not considered influencing quantities) and weight distribution between axles due to acceleration and road profile. This block accepts as input the resulting traction motion developed by tires (that is to say, the output of the Simscape wheels blocks), giving as output the vehicle velocity and also the front normal wheel forces.\\
 Finally, from this block is also emulated the radar function, that is to say the monitoring of the distance between this vehicle and the leading one: in fact, thanks to the presence of an integrator block, from the actual speed of the vehicle its position is computed. Then this position is fed back and subtracted to the position of the leading vehicle, resulting in radar distance.
 
 \begin{figure}[htbp]
@@ -242,8 +242,8 @@ In the same way the tool can generate a report regarding the output of the test,
 	\caption{An overview of the torque split subsystem}
 	\label{split_subs}
 \end{figure}
-This unit’s goal is to split the signal coming from the PID, asking for torque. The PID asks for a negative or positive torque, the system has to be able to translate the negative torque in a signal to be sent to the brake module. To test this unit the following steps have to be performed: when a positive input is given this is transferred to the engine while when a negative input is given it is transferred to the brake output. At the same time the output assigned to the opposite sign has to be zero.
-In Fig. \ref{input_split_test} is possible to see how the test input was designed and also that the output corresponds exactly to the baseline signal, meaning a successful test.
+This unit’s goal is to split the signal coming from the PID, asking for torque. The PID asks for a negative or positive torque, the system has to be able to translate the negative torque in a signal to be sent to the brake module. To test this unit the following steps have to be performed: when a positive input is given this is transferred to the engine, while when a negative input is given it is transferred to the brake output. At the same time the output assigned to the opposite sign has to be zero.
+In Fig. \ref{input_split_test} it is possible to see how the test input was designed and also that the output corresponds exactly to the baseline signal, meaning a successful test.
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[scale=0.4]{input_split_test}\hfill
@@ -275,12 +275,12 @@ To be more robust against unexpected behaviour an additional output has been add
 	\caption{OTR output vs baseline (up) PID::P output vs baseline (down)}
 	\label{OTR_baseline_result}
 \end{figure}
-The behaviour of this signal has been tested too. In Fig.\ref{SoC_handle_input}can be deduced from the input signal (second half of the signal) that regardless the current state and the previous value of the SoC signal, the OTR signal raises when expected to.
-In Fig.\ref{OTR_baseline_result} can be seen that the output signal matches the baseline, meaning a successful test.
+The behaviour of this signal has been tested too. In Fig.\ref{SoC_handle_input} it can be deduced from the input signal (second half of the signal) that regardless the current state and the previous value of the SoC signal, the OTR signal raises when expected too.
+In Fig.\ref{OTR_baseline_result} it can be seen that the output signal matches the baseline, meaning a successful test.
 \FloatBarrier
 \subsection{Integration test}
 All these units cooperate in the same controller module, so an integration test would be necessary. In this specific case these three units do not have in common any input or output, meaning that there is no possible integration test to be performed. All these units are meant to condition the PID behaviour, so in order to perform an integration test the PID would have to be involved. Since the PID block itself is assumed to be tested by MATLAB there is no point in testing the PID behaviour when not regulating a plant model.
-According to the previous affirmations we decided to let the integration test coincide with the MIL test, in order to test the behaviour of the whole controller.
+According to the previous affirmations it was decided to let the integration test coincide with the MIL test, in order to test the behaviour of the whole controller.
 
 \section{Model-in-the-loop (MIL)}
 MIL is a type of testing that can be done at the very first stage of the development process.\\
@@ -311,7 +311,7 @@ Since, as mentioned before, the controller takes into account also the SoC value
 	\caption{Speed of the vehicle for 100 SoC}
 \end{figure}
 \FloatBarrier
-As can be seen from the graphs, the model in order to fulfils all the requirements previously defined: the speed limit imposed by the driver (50 Km/h in this case) is not overcame.\\
+As can be seen from the graphs, the model fulfils all the requirements previously defined: the speed limit imposed by the driver (50 Km/h in this case) is not overcame.\\
 In addition, a particular time interval has been considered to show how the SoC value influences the controller response.\\
 \FloatBarrier
 
